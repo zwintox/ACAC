@@ -16,7 +16,7 @@ public class MemberRepository {
     @Autowired
     public DataSource dataSource;
 
-
+    Connection conn = null;
     public void addMember(int ID,
                           int personalNumber,
                           String firstName,
@@ -28,7 +28,7 @@ public class MemberRepository {
                           int phoneNumber,
                           String password) {
         try {
-            Connection conn = null;
+
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO Member (personalNumber, " +
                     "firstName," +
@@ -39,14 +39,14 @@ public class MemberRepository {
                     "eMail," +
                     "phoneNumber," +
                     "password) VALUES (?,?,?,?,?,?,?,?)", new String[]{"ID"});
-            ps.setString(1, String.valueOf(personalNumber));
+            ps.setInt(1, (personalNumber));
             ps.setString(2, firstName);
             ps.setString(3, lastName);
             ps.setString(4, city);
             ps.setString(5, address);
-            ps.setString(6, String.valueOf(zipCode));
+            ps.setInt(6, (zipCode));
             ps.setString(7, eMail);
-            ps.setString(7, String.valueOf(phoneNumber));
+            ps.setInt(7, (phoneNumber));
             ps.setString(8, password);
             ps.executeUpdate();
         } catch (SQLException e) {
