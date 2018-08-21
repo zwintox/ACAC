@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <h1>Välkommen att fylla i din skadeanmälan nedan:</h1>
     <meta charset="UTF-8">
     <title>Acac</title>
 </head>
@@ -10,32 +11,34 @@
 
 <div id="accidentForm">
     <form th:action="addNewAccident" method="post" th:object>
-        Regnummer på fordonet:<br>
-        <input type="text"><br>
+        Registreringsnummer på ditt fordon:<br>
+        <input type="text" th:field="Regnr"><br>
         Omständighet:<br>
-        <select name="accident">
-            <option >Frontalkrock</option>
-            <option >Backningsolycka</option>
-            <option >Avkörning på väg</option>
-            <option >Sidokrock</option>
-            <option >Mindre skador</option>
+        <select  th:field="*{Omständighet}">
+            <option th:value="'F'" th:text="Frontalkrock">Frontalkrock</option>
+            <option th:value="'B'" th:text="Backningsolycka">Backningsolycka</option>
+            <option th:value="'A'" th:text="Avkörning på väg">Avkörning på väg</option>
+            <option th:value="'S'" th:text="Sidokrock">Sidokrock</option>
+            <option th:value="'M'" th:text="Mindre skador">Mindre skador</option>
+
         </select><br>
-        Tidpunk för olyckan:
+        Tidpunkt för olyckan:
         <div>
-            <input type="date" id="start" name="trip"
+            <input type="date" th:field="Skadedag" id="start" name="trip"
                    value="2018-07-22"
                    min="2018-01-01" max="2018-12-31" />
         </div>
         Försäkringsbolag:<br>
-        <select name="bolag">
-            <option >Aktsam</option>
-            <option >Folksam</option>
-            <option >If</option>
-            <option >Länsförsäkringar</option>
-            <option >Trygghansa</option>
+        <select th:field="Försäkringsbolag" name="bolag">
+            <option th:value="'A'" th:text="Aktsam">Aktsam</option>
+            <option th:value="'F'" th:text="Folksam">Folksam</option>
+            <option th:value="'I'" th:text="If">If</option>
+            <option th:value="'L'" th:text="Länsförsäkringar">Länsförsäkringar</option>
+            <option th:value="'T'" th:text="Trygghansa">Trygghansa</option>
+
         </select><br>
         Var polisen på plats?<br>
-        <input type="radio" name="Polis" value="Yes"> Ja<br>
+        <input type="radio" th:field="Polis" name="Polis" value="Yes"> Ja<br>
         <input type="radio" name="Polis" value="No"> Nej<br>
         Skador på föraren:<br>
         <select name="damage1">
