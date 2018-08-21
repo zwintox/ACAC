@@ -9,4 +9,7 @@ import javax.sql.DataSource;
 public class PhotoRepository {
     @Autowired
     public DataSource dataSource;
+
+    public void addPhoto(int ID, String source, int accidentID) {
+    }
 }
