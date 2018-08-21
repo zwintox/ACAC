@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ACAC - After Car Accident</title>
     <link rel="stylesheet" type="text/css" href="css.css">
     <script src="jquery.min.js" type="text/javascript"></script>
     <script src="jquery-ui.min.js" type="text/javascript"></script>
@@ -58,52 +58,64 @@
         </div> <!-- cd-login -->
 
         <div id="cd-signup"> <!-- sign up form -->
-            <form class="cd-form">
+            <form class="cd-form" th:action="@{/}"method="post">
                 <p class="fieldset">
                     <label class="image-replace cd-förnamn" for="signup-förnamn">Förnamn</label>
-                    <input class="full-width has-padding has-border" id="signup-förnamn" type="förnamn" placeholder="Förnamn">
+                    <input class="full-width has-padding has-border" name="firstName" id="signup-förnamn" type="förnamn" placeholder="Förnamn">
                     <span class="cd-error-message">Fyll i ditt förnamn här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-efternamn" for="signup-efternamn">Efternamn</label>
-                    <input class="full-width has-padding has-border" id="signup-efternamn" type="efternamn" placeholder="Efternamn">
+                    <input class="full-width has-padding has-border" name="lastName" id="signup-efternamn" type="efternamn" placeholder="Efternamn">
                     <span class="cd-error-message">Fyll i ditt efternamn här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-adress" for="signup-adress">Adress</label>
-                    <input class="full-width has-padding has-border" id="signup-adress" type="adress" placeholder="Adress">
+                    <input class="full-width has-padding has-border" name="address" id="signup-adress" type="adress" placeholder="Adress">
+                    <span class="cd-error-message">Fyll i din adress här.</span>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace cd-city" for="signup-city">City</label>
+                    <input class="full-width has-padding has-border" name="city" id="signup-city" type="city" placeholder="City">
+                    <span class="cd-error-message">Fyll i din adress här.</span>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace cd-zipcode" for="signup-zipcode">Postnummer</label>
+                    <input class="full-width has-padding has-border" name="zipCode"id="signup-zipcode" type="zipcode" placeholder="Postnummer">
                     <span class="cd-error-message">Fyll i din adress här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-telefonnummer" for="signup-telefonnummer">Telefonnummer</label>
-                    <input class="full-width has-padding has-border" id="signup-telefonnummer" type="telefonnummer" placeholder="Telefonnummer">
+                    <input class="full-width has-padding has-border" name="phoneNumber"id="signup-telefonnummer" type="telefonnummer" placeholder="Telefonnummer">
                     <span class="cd-error-message">Fyll i ditt telefonnummer här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-personnummer" for="signup-personnummer">Personnummer</label>
-                    <input class="full-width has-padding has-border" id="signup-personnummer" type="personnummer" placeholder="Personnummer">
+                    <input class="full-width has-padding has-border" name="personalNumber" id="signup-personnummer" type="personnummer" placeholder="Personnummer">
                     <span class="cd-error-message">Fyll i ditt personnummer här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+                    <input class="full-width has-padding has-border" name="eMail" id="signup-email" type="email" placeholder="E-mail">
                     <span class="cd-error-message">Fyll i din email här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-regnr" for="signup-regnr">Registreringnummer</label>
-                    <input class="full-width has-padding has-border" id="signup-regnr" type="regnr" placeholder="Registreringsnummer">
+                    <input class="full-width has-padding has-border" name="regnr" id="signup-regnr" type="regnr" placeholder="Registreringsnummer">
                     <span class="cd-error-message">Fyll i ditt registreringnummer här.</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signup-password">Lösenord</label>
-                    <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+                    <input class="full-width has-padding has-border" name="password" id="signup-password" type="text"  placeholder="Password">
                     <a href="#0" class="hide-password">Dölj</a>
                     <span class="cd-error-message">Fyll o ditt lösenord här.</span>
                 </p>
