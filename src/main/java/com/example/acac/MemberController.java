@@ -21,6 +21,11 @@ public class MemberController {
                                   @RequestParam String eMail,
                                   @RequestParam int phoneNumber,
                                   @RequestParam String password) {
-        return "index";
+
+
+        return "LoggedIn";
     }
+
+
+
 }
