@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acac</title>
+</head>
+<body>
+
+<Button id="profileBtn">Min sida</Button>
+
+<div id="accidentForm">
+    <form>
+        Regnummer på fordonet:<br>
+        <input type="text"><br>
+        Omständighet:<br>
+        <select name="accident">
+            <option >Frontalkrock</option>
+            <option >Backningsolycka</option>
+            <option >Avkörning på väg</option>
+            <option >Sidokrock</option>
+            <option >Mindre skador</option>
+        </select><br>
+        Tidpunk för olyckan:
+        <div>
+            <input type="date" id="start" name="trip"
+                   value="2018-07-22"
+                   min="2018-01-01" max="2018-12-31" />
+        </div>
+        Försäkringsbolag:<br>
+        <select name="bolag">
+            <option >Aktsam</option>
+            <option >Folksam</option>
+            <option >If</option>
+            <option >Länsförsäkringar</option>
+            <option >Trygghansa</option>
+        </select><br>
+        Var polisen på plats?<br>
+        <input type="radio" name="Polis" value="Yes"> Ja<br>
+        <input type="radio" name="Polis" value="No"> Nej<br>
+        Skador på föraren:<br>
+        <select name="damage1">
+            <option >Inga</option>
+            <option >Skall-skador</option>
+            <option >Kropps-skador</option>
+            <option >Mildare skador</option>
+            <option >Avliden</option>
+        </select><br>
+        Skador på passagerare:<br>
+        <select name="damage2">
+            <option >Inga</option>
+            <option >Skall-skador</option>
+            <option >Kropps-skador</option>
+            <option >Mildare skador</option>
+            <option >Avliden</option>
+        </select><br>
+
+        Beskriv händelseförloppet:<br>
+        <textarea name="message" rows="10" cols="30">
+        </textarea>
+
+        <button id="formBtn">Skicka</button>
+    </form>
+</div>
+
+
+<div id="accidentForm2">
+
+    Formulär angående andra föraren.
+    <form>
+        Namn:<br>
+        <input type="text"><br>
+        Efternamn:<br>
+        <input type="text"><br>
+        Telefonnummer:<br>
+        <input type="text"><br>
+        Regnummer på fordonet:<br>
+        <input type="text"><br>
+        Skador på föraren av detta fordon:<br>
+        <select name="damage1">
+            <option >Inga</option>
+            <option >Skall-skador</option>
+            <option >Kropps-skador</option>
+            <option >Mildare skador</option>
+            <option >Avliden</option>
+        </select><br>
+        Skador på dess passagerare:<br>
+        <select name="damage2">
+            <option >Inga</option>
+            <option >Skall-skador</option>
+            <option >Kropps-skador</option>
+            <option >Mildare skador</option>
+            <option >Avliden</option>
+        </select><br>
+        Skador på andra inblandade:<br>
+        <select name="damage2">
+            <option >Inga</option>
+            <option >Skall-skador</option>
+            <option >Kropps-skador</option>
+            <option >Mildare skador</option>
+            <option >Avliden</option>
+        </select><br>
+        <button id="formBtn2">Skicka</button>
+    </form>
+</div>
+
+</body>
+</html>
