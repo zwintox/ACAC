@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Acac</title>
@@ -9,7 +9,7 @@
 <Button id="profileBtn">Min sida</Button>
 
 <div id="accidentForm">
-    <form>
+    <form th:action="addNewAccident" method="post" th:object>
         Regnummer på fordonet:<br>
         <input type="text"><br>
         Omständighet:<br>
