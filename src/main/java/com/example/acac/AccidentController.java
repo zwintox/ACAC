@@ -22,7 +22,7 @@ public class AccidentController {
     @PostMapping("/addNewAccident")
 
     public String addNewAccident(Accident accident) {
-        accidentRepository.addNewAccident(accident.getID(),
+        accidentRepository.addNewAccident(
                 accident.getRegnr(),
                 accident.getFörsäkringsbolag(),
                 accident.getOmständighet(),
@@ -35,7 +35,8 @@ public class AccidentController {
                 accident.getHändelseförlopp(),
                 accident.getSkadorPåBilen(),
                 accident.isPolisPåPlats(),
-                accident.getUtandningsprov());
+                accident.getUtandningsprov(),
+                accident.getRegnrmotpart());
 
                 return"confirmation";
     }

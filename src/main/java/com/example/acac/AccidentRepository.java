@@ -16,8 +16,7 @@ public class AccidentRepository {
     public DataSource dataSource;
     Connection conn = null;
 
-    public void addNewAccident(int ID,
-                               String Regnr,
+    public void addNewAccident(String Regnr,
                                String Försäkringsbolag,
                                String Omständighet,
                                Date Skadedag,
@@ -29,7 +28,8 @@ public class AccidentRepository {
                                String Händelseförlopp,
                                String SkadorPåBilen,
                                boolean PolisPåPlats,
-                               String Utandningsprov) {
+                               String Utandningsprov,
+                               String regnrmotpart) {
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(" INSERT INTO Accident (Regnr, " +
@@ -44,7 +44,8 @@ public class AccidentRepository {
                     "Händelseförlopp, " +
                     "SkadorPåBilen," +
                     "PolisPåPlats," +
-                    "Utandningsprov) VALUES {?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new String[]{"ID"});
+                    "Utandningsprov," +
+                    "regnrmotpart) VALUES {?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new String[]{"ID"});
 
             ps.setString(1, Regnr);
             ps.setString(2, Försäkringsbolag);
@@ -59,6 +60,8 @@ public class AccidentRepository {
             ps.setString(11, SkadorPåBilen);
             ps.setBoolean(12, PolisPåPlats);
             ps.setString(13, Utandningsprov);
+            ps.setString(14, regnrmotpart);
+
             ps.execute();
 
         } catch (SQLException e) {
