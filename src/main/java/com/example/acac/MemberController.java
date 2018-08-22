@@ -35,6 +35,18 @@ public class MemberController {
         mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
         return "index";
     }
+    @PostMapping ("/")
+    public String editMember (@RequestParam String firstName,
+                              @RequestParam String lastName,
+                              @RequestParam String city,
+                              @RequestParam String address,
+                              @RequestParam int zipCode,
+                              @RequestParam String eMail,
+                              @RequestParam String phoneNumber,
+                              @RequestParam String password) {
+        mr.editMember(firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
+        return "LoggedIn";
+    }
 
 
 }
