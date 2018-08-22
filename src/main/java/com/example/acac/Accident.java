@@ -39,7 +39,6 @@ public class Accident {
                     boolean PolisPåPlats,
                     String Utandningsprov,
                     String regnrmotpart) {
-                    String Utandningsprov) {
 
         this.Regnr = Regnr;
         this.Försäkringsbolag = Försäkringsbolag;
@@ -52,6 +51,7 @@ public class Accident {
         this.DriverPhoneNumber = DriverPhoneNumber;
         this.Händelseförlopp = Händelseförlopp;
         this.SkadorPåBilen = SkadorPåBilen;
+        this.PolisPåPlats = PolisPåPlats;
         this.Utandningsprov = Utandningsprov;
         this.regnrmotpart = regnrmotpart;
 
@@ -154,7 +154,7 @@ public class Accident {
         SkadorPåBilen = skadorPåBilen;
     }
 
-    public boolean isPolisPåPlats() {
+    public boolean getPolisPåPlats() {
         return PolisPåPlats;
     }
 

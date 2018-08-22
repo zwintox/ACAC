@@ -16,28 +16,45 @@ import java.sql.Date;
 public class AccidentController {
     @Autowired
     private AccidentRepository accidentRepository;
-    @Autowired
-    private MemberRepository memberRepository;
+
 
     @PostMapping("/addNewAccident")
 
-    public String addNewAccident(Accident accident) {
-        accidentRepository.addNewAccident(
-                accident.getRegnr(),
-                accident.getFörsäkringsbolag(),
-                accident.getOmständighet(),
-                accident.getSkadedag(),
-                accident.getSkadeplats(),
-                accident.getDriverPersonalID(),
-                accident.getDriverFirstName(),
-                accident.getDriverLastName(),
-                accident.getDriverPhoneNumber(),
-                accident.getHändelseförlopp(),
-                accident.getSkadorPåBilen(),
-                accident.isPolisPåPlats(),
-                accident.getUtandningsprov(),
-                accident.getRegnrmotpart());
+    public String addNewAccident(@RequestParam String Regnr,
+                                 @RequestParam String Försäkringsbolag,
+                                 @RequestParam String Omständighet,
+                                 @RequestParam Date Skadedag,
+                                 @RequestParam String Skadeplats,
+                                 @RequestParam String DriverPersonalID,
+                                 @RequestParam String DriverFirstName,
+                                 @RequestParam String DriverLastName,
+                                 @RequestParam String DriverPhoneNumber,
+                                 @RequestParam String Händelseförlopp,
+                                 @RequestParam String SkadorPåBilen,
+                                 @RequestParam boolean PolisPåPlats,
+                                 @RequestParam String Utandningsprov,
+                                 @RequestParam String regnrmotpart,
 
-                return"confirmation";
+                                Accident accident) {
+
+        accidentRepository.addNewAccident(
+                Regnr,
+                Försäkringsbolag,
+                Omständighet,
+                Skadedag,
+                Skadeplats,
+                DriverPersonalID,
+                DriverFirstName,
+                DriverLastName,
+                DriverPhoneNumber,
+                Händelseförlopp,
+                SkadorPåBilen,
+                PolisPåPlats,
+                Utandningsprov,
+                regnrmotpart,
+                1);
+
+
+        return "index";
     }
 }

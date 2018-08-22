@@ -29,23 +29,11 @@ public class AccidentRepository {
                                String SkadorPåBilen,
                                boolean PolisPåPlats,
                                String Utandningsprov,
-                               String regnrmotpart) {
+                               String regnrmotpart,
+                               int ID) {
         try {
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(" INSERT INTO Accident (Regnr, " +
-                    "Försäkringsbolag, " +
-                    "Omständighet," +
-                    "Skadedag, " +
-                    "Skadeplats, " +
-                    "DriverPersonalID, " +
-                    "DriverFirstName, " +
-                    "DriverLastName, " +
-                    "DriverPhoneNumber, " +
-                    "Händelseförlopp, " +
-                    "SkadorPåBilen," +
-                    "PolisPåPlats," +
-                    "Utandningsprov," +
-                    "regnrmotpart) VALUES {?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new String[]{"ID"});
+            PreparedStatement ps = conn.prepareStatement(" EXEC CreateClaim @Regnr =?, @Försäkringsbolag =?, @Omständighet =?, @Skadedag =?, @Skadeplats =?, @DriverPersonalID =?, @DriverFirstName =?, @DriverLastName =?, @DriverPhoneNumber =?, @Händelseförlopp =?, @SkadorPåBilen =?, @PolisPåPlats =?, @Utandningsprov =?, @regnrmotpart =?, @memberID =?",  new String[]{"ID"});
 
             ps.setString(1, Regnr);
             ps.setString(2, Försäkringsbolag);
@@ -59,10 +47,11 @@ public class AccidentRepository {
             ps.setString(10, Händelseförlopp);
             ps.setString(11, SkadorPåBilen);
             ps.setBoolean(12, PolisPåPlats);
-            ps.setString(13, Utandningsprov);
-            ps.setString(14, regnrmotpart);
+            ps.setString(13, Utandningsprov);         ps.setString(14, regnrmotpart);
+            ps.setInt(15, ID);
 
-            ps.execute();
+            ps.executeQuery();
+            conn.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
