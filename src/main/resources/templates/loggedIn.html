@@ -55,41 +55,31 @@
         <input type="text" th:field="*{DriverPhoneNumber}"><br>
 
         Beskriv händelseförloppet:<br>
-        <textarea name="message" th:field="*{Händelseförlopp]" rows="10" cols="30">
+        <textarea name="message" th:field="*{Händelseförlopp}" rows="10" cols="30">
         </textarea>
+        <br>
+        Skador på er bil:<br>
+        <input type="text" th:field="*{SkadorPåBilen}"><br>
 
-        Var polisen på plats?<br>
-        <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes"> Ja<br>
+        <br>
+        Var polisen på plats?
+        <input type="checkbox" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes"> Ja<br>
 
         Utandningsprov:
             <select  th:field="*{Utandningsprov}">
                 <option th:value="'P'" >Positivt</option>
                 <option th:value="'N'" >Negativt</option></select>
+        <br>
+
+        Registreringsnummer motpart:<br>
+        <input type="text" th:field="*{regnrmotpart}"><br>
 
         <button id="formBtn">Skicka</button>
     </form>
 </div>
 
 
-<div id="accidentForm2">
 
-    Formulär angående andra föraren.<br>
-    <form>
-        Registreringsnummer hos motpart:<br>
-        <input type="text" th:field="*{regnrmotpart}"><br>
-        Telefonnummer:<br>
-        <input type="text"><br>
-        Regnummer på fordonet:<br>
-        <input type="text"><br>
-        Skador hos motpart:<br>
-        <input type="text" th:field="*{skadormotpart}"><br>
-        Motpartens försäkringsbolag:
-        <input type="text" th:field="*{försäkringsbolag}"><br>
-
-
-        <button id="formBtn2">Skicka</button>
-    </form>
-</div>
 
 </body>
 </html>

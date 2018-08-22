@@ -35,7 +35,7 @@ public class MemberController {
         mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
         return "index";
     }
-    @PostMapping ("/")
+    @PostMapping ("/editMember")
     public String editMember (@RequestParam String firstName,
                               @RequestParam String lastName,
                               @RequestParam String city,

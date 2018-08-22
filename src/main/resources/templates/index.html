@@ -33,13 +33,13 @@
             <form class="cd-form" th:action="@{login}" method="post">
                 <p class="fieldset">
                     <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                    <input class="full-width has-padding has-border" id="signin-email" type="email" name="eMail" placeholder="E-mail">
                     <span class="cd-error-message">Fyll i din email korrekt!</span>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signin-password">Lösenord</label>
-                    <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+                    <input class="full-width has-padding has-border" id="signin-password" type="password" name="password"  placeholder="Password">
                     <a href="#0" class="hide-password">Dölj</a>
                     <span class="cd-error-message">Felaktigt lösenord.</span>
                 </p>
