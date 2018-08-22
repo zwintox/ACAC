@@ -9,35 +9,46 @@ public class Accident {
     private String Försäkringsbolag;
     private String Omständighet;
     private Date Skadedag;
-    private String SkadePlats;
-    private String EgnaSkador;
-    private int DriverPersonalID;
+    private String Skadeplats;
+    private String DriverPersonalID;
     private String DriverFirstName;
     private String DriverLastName;
     private int DriverPhoneNumber;
     private String Händelseförlopp;
     private String SkadorPåBilen;
+    private boolean PolisPåPlats;
+    private String Utandningsprov;
 
     public Accident(int ID,
-                    Date skadedag,
-                    String regnr,
-                    String försäkringsbolag,
-                    int driverPersonalID,
-                    String driverFirstName,
-                    String driverLastName,
-                    int driverPhoneNumber,
-                    String händelseförlopp,
-                    String skadorPåBilen) {
+                    String Regnr,
+                    String Försäkringsbolag,
+                    String Omständighet,
+                    Date Skadedag,
+                    String Skadeplats,
+                    String DriverPersonalID,
+                    String DriverFirstName,
+                    String DriverLastName,
+                    int DriverPhoneNumber,
+                    String Händelseförlopp,
+                    String SkadorPåBilen,
+                    boolean PolisPåPlats,
+                    String Utandningsprov) {
         this.ID = ID;
-        Skadedag = skadedag;
-        Regnr = regnr;
-        Försäkringsbolag = försäkringsbolag;
-        DriverPersonalID = driverPersonalID;
-        DriverFirstName = driverFirstName;
-        DriverLastName = driverLastName;
-        DriverPhoneNumber = driverPhoneNumber;
-        Händelseförlopp = händelseförlopp;
-        SkadorPåBilen = skadorPåBilen;
+        this.Regnr = Regnr;
+        this.Försäkringsbolag = Försäkringsbolag;
+        this.Omständighet = Omständighet;
+        this.Skadedag = Skadedag;
+        this.Skadeplats = Skadeplats;
+        this.DriverPersonalID = DriverPersonalID;
+        this.DriverFirstName = DriverFirstName;
+        this.DriverLastName = DriverLastName;
+        this.DriverPhoneNumber = DriverPhoneNumber;
+        this.Händelseförlopp = Händelseförlopp;
+        this.SkadorPåBilen = SkadorPåBilen;
+        this.PolisPåPlats = PolisPåPlats;
+        this.Utandningsprov = Utandningsprov;
+
+
     }
 
     public int getID() {
@@ -46,14 +57,6 @@ public class Accident {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public Date getSkadedag() {
-        return Skadedag;
-    }
-
-    public void setSkadedag(Date skadedag) {
-        Skadedag = skadedag;
     }
 
     public String getRegnr() {
@@ -72,11 +75,35 @@ public class Accident {
         Försäkringsbolag = försäkringsbolag;
     }
 
-    public int getDriverPersonalID() {
+    public String getOmständighet() {
+        return Omständighet;
+    }
+
+    public void setOmständighet(String omständighet) {
+        Omständighet = omständighet;
+    }
+
+    public Date getSkadedag() {
+        return Skadedag;
+    }
+
+    public void setSkadedag(Date skadedag) {
+        Skadedag = skadedag;
+    }
+
+    public String getSkadeplats() {
+        return Skadeplats;
+    }
+
+    public void setSkadeplats(String skadeplats) {
+        Skadeplats = skadeplats;
+    }
+
+    public String getDriverPersonalID() {
         return DriverPersonalID;
     }
 
-    public void setDriverPersonalID(int driverPersonalID) {
+    public void setDriverPersonalID(String driverPersonalID) {
         DriverPersonalID = driverPersonalID;
     }
 
@@ -118,5 +145,21 @@ public class Accident {
 
     public void setSkadorPåBilen(String skadorPåBilen) {
         SkadorPåBilen = skadorPåBilen;
+    }
+
+    public boolean isPolisPåPlats() {
+        return PolisPåPlats;
+    }
+
+    public void setPolisPåPlats(boolean polisPåPlats) {
+        PolisPåPlats = polisPåPlats;
+    }
+
+    public String getUtandningsprov() {
+        return Utandningsprov;
+    }
+
+    public void setUtandningsprov(String utandningsprov) {
+        Utandningsprov = utandningsprov;
     }
 }
