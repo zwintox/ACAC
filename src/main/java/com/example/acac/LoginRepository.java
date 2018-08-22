@@ -15,33 +15,26 @@ public class LoginRepository {
     @Autowired
     public DataSource dataSource;
 
-    private int userid;
+    private int memberid;
 
 
-    public boolean getMemeber(String eMail, String password) {
+    public Member getMember(String eMail, String password) {
         Connection conn = null;
         try {
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Members WHERE eMail=? AND password=?");
+            PreparedStatement ps = conn.prepareStatement("Exec Login @eMail=?, @password=?");
             ps.setString(1, eMail);
-            ps.setString(1, password);
+            ps.setString(2, password);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
-                this.userid = resultSet.getInt("ID");
-                return true;
-            } else{
-                return false;
+                return new Member(resultSet.getInt("ID"));
             }
+            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return false;
+        return null;
+
     }
 }
