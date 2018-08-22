@@ -212,7 +212,7 @@ Main components
 
 -------------------------------- */
 header[role=banner] {
-    position: relative;
+    position: center;
     height: 80px;
     background: #0040ff;
     justify-content: center;
@@ -261,8 +261,8 @@ header[role=banner]::after {
 }
 
 .main-nav {
-    float: right;
-    margin-right: 5%;
+    float: center;
+    margin-right: 50%;
     width: 44px;
     height: 100%;
     background: url("../img/cd-icon-menu.svg") no-repeat center center;
@@ -270,10 +270,14 @@ header[role=banner]::after {
     justify-content: center;
 }
 .main-nav ul {
-    position: absolute;
+    margin: auto;
+    width: 40%;
+    border: 3px solid #fff;
+    padding: 10px;
+    position: center;
+    text-align: center;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
     -webkit-transform: translateY(-100%);
     -moz-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
@@ -308,7 +312,7 @@ header[role=banner]::after {
         justify-content: center;
     }
     .main-nav ul {
-        position: static;
+        position: center;
         width: auto;
         -webkit-transform: translateY(0);
         -moz-transform: translateY(0);
