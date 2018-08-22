@@ -2,17 +2,17 @@ package com.example.acac;
 
 public class Member {
     private int ID;
-    private int personalNumber;
+    private String personalNumber;
     private String firstName;
     private String lastName;
     private String city;
     private String address;
     private int zipCode;
     private String eMail;
-    private int phoneNumber;
+    private String phoneNumber;
     private String password;
 
-    public Member(int ID, int personalNumber, String firstName, String lastName, String city, String address, int zipCode, String eMail, int phoneNumber, String password) {
+    public Member(int ID, String personalNumber, String firstName, String lastName, String city, String address, int zipCode, String eMail, String phoneNumber, String password) {
 
         this.ID = ID;
         this.personalNumber = personalNumber;
@@ -34,11 +34,11 @@ public class Member {
         this.ID = ID;
     }
 
-    public int getPersonalNumber() {
+    public String getPersonalNumber() {
         return personalNumber;
     }
 
-    public void setPersonalNumber(int personalNumber) {
+    public void setPersonalNumber(String personalNumber) {
         this.personalNumber = personalNumber;
     }
 
@@ -90,11 +90,11 @@ public class Member {
         this.eMail = eMail;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
