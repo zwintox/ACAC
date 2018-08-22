@@ -16,24 +16,23 @@ public class AccidentRepository {
     public DataSource dataSource;
     Connection conn = null;
 
-    public void addNewAccident(int ID,
-                                 String Regnr,
-                                 String Försäkringsbolag,
-                                 String Omständighet,
-                                 Date Skadedag,
-                                 String Skadeplats,
+    public void addNewAccident(String Regnr,
+                               String Försäkringsbolag,
+                               String Omständighet,
+                               Date Skadedag,
+                               String Skadeplats,
                                String DriverPersonalID,
-                                 String DriverFirstName,
-                                 String DriverLastName,
-                                 String DriverPhoneNumber,
-                                 String Händelseförlopp,
-                                 String SkadorPåBilen,
+                               String DriverFirstName,
+                               String DriverLastName,
+                               String DriverPhoneNumber,
+                               String Händelseförlopp,
+                               String SkadorPåBilen,
                                boolean PolisPåPlats,
-                               String Utandningsprov) {
+                               String Utandningsprov,
+                               String regnrmotpart) {
         try {
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(" INSERT INTO Accident (ID, " +
-                    "Regnr, " +
+            PreparedStatement ps = conn.prepareStatement(" INSERT INTO Accident (Regnr, " +
                     "Försäkringsbolag, " +
                     "Omständighet," +
                     "Skadedag, " +
@@ -45,21 +44,24 @@ public class AccidentRepository {
                     "Händelseförlopp, " +
                     "SkadorPåBilen," +
                     "PolisPåPlats," +
-                    "Utandningsprov) VALUES {?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new String[]{"ID"});
-            ps.setInt(1, (ID));
-            ps.setString(2, Regnr);
-            ps.setString(3, Försäkringsbolag);
-            ps.setString(4, Omständighet);
-            ps.setDate(5, Skadedag);
-            ps.setString(6, Skadeplats);
-            ps.setString(7, DriverPersonalID);
-            ps.setString(8, DriverFirstName);
-            ps.setString(9, DriverLastName);
-            ps.setString(10, DriverPhoneNumber);
-            ps.setString(11, Händelseförlopp);
-            ps.setString(12, SkadorPåBilen);
+                    "Utandningsprov," +
+                    "regnrmotpart) VALUES {?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new String[]{"ID"});
+
+            ps.setString(1, Regnr);
+            ps.setString(2, Försäkringsbolag);
+            ps.setString(3, Omständighet);
+            ps.setDate(4, Skadedag);
+            ps.setString(5, Skadeplats);
+            ps.setString(6, DriverPersonalID);
+            ps.setString(7, DriverFirstName);
+            ps.setString(8, DriverLastName);
+            ps.setString(9, DriverPhoneNumber);
+            ps.setString(10, Händelseförlopp);
+            ps.setString(11, SkadorPåBilen);
             ps.setBoolean(12, PolisPåPlats);
-            ps.setString(12, Utandningsprov);
+            ps.setString(13, Utandningsprov);
+            ps.setString(14, regnrmotpart);
+
             ps.execute();
 
         } catch (SQLException e) {
