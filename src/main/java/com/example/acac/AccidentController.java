@@ -22,25 +22,33 @@ public class AccidentController {
     @PostMapping("/addNewAccident")
 
     public String addNewAccident(@RequestParam int ID,
-                                 @RequestParam Date skadedag,
-                                 @RequestParam String regnr,
-                                 @RequestParam String försäkringsbolag,
-                                 @RequestParam int driverPersonalID,
-                                 @RequestParam String driverFirstName,
-                                 @RequestParam String driverLastName,
-                                 @RequestParam int driverPhoneNumber,
-                                 @RequestParam String händelseförlopp,
-                                 @RequestParam String skadorPåBilen) {
+                                 @RequestParam String Regnr,
+                                 @RequestParam String Försäkringsbolag,
+                                 @RequestParam String Omständighet,
+                                 @RequestParam Date Skadedag,
+                                 @RequestParam String Skadeplats,
+                                 @RequestParam String DriverPersonalID,
+                                 @RequestParam String DriverFirstName,
+                                 @RequestParam String DriverLastName,
+                                 @RequestParam String DriverPhoneNumber,
+                                 @RequestParam String Händelseförlopp,
+                                 @RequestParam String SkadorPåBilen,
+                                 @RequestParam Boolean PolisPåPlats,
+                                 @RequestParam String Utandningsprov) {
         accidentRepository.addNewAccident(ID,
-                skadedag,
-                regnr,
-                försäkringsbolag,
-                driverPersonalID,
-                driverFirstName,
-                driverLastName,
-                driverPhoneNumber,
-                händelseförlopp,
-                skadorPåBilen);
+                Regnr,
+                Försäkringsbolag,
+                Omständighet,
+                Skadedag,
+                Skadeplats,
+                DriverPersonalID,
+                DriverFirstName,
+                DriverLastName,
+                DriverPhoneNumber,
+                Händelseförlopp,
+                SkadorPåBilen,
+                PolisPåPlats,
+                Utandningsprov);
 
                 return"confirmation";
     }
