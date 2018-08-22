@@ -25,6 +25,10 @@ public class Member {
         this.password = password;
     }
 
+    public Member(int ID) {
+        this.ID = ID;
+    }
+
     public int getID() {
         return ID;
     }
