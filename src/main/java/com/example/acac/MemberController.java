@@ -12,6 +12,7 @@ import java.util.List;
 @Controller
 public class MemberController {
     @Autowired MemberRepository memberRepository;
+    @Autowired
     MemberRepository mr;
     List<Member> members = new ArrayList<>();
 
@@ -30,12 +31,9 @@ public class MemberController {
                                   @RequestParam int zipCode,
                                   @RequestParam String eMail,
                                   @RequestParam String phoneNumber,
-                                  @RequestParam String regnr,
                                   @RequestParam String password) {
-        members.add(new member(mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password)));
-        System.out.println(firstName);
-        System.out.println("heeej");
-        return "LoggedIn";
+        mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
+        return "index";
     }
 
 

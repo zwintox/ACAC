@@ -12,9 +12,8 @@ public class Member {
     private String phoneNumber;
     private String password;
 
-    public Member(int ID, String personalNumber, String firstName, String lastName, String city, String address, int zipCode, String eMail, String phoneNumber, String password) {
+    public Member(String personalNumber, String firstName, String lastName, String city, String address, int zipCode, String eMail, String phoneNumber, String password) {
 
-        this.ID = ID;
         this.personalNumber = personalNumber;
         this.firstName = firstName;
         this.lastName = lastName;

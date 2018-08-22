@@ -1,6 +1,5 @@
 package com.example.acac;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,9 +38,9 @@ public class MemberRepository {
             ps.setString(5, address);
             ps.setInt(6, (zipCode));
             ps.setString(7, eMail);
-            ps.setString(7, phoneNumber);
-            ps.setString(8, password);
-            ps.executeUpdate();
+            ps.setString(8, phoneNumber);
+            ps.setString(9, password);
+            ps.executeQuery();
             conn.close();
 
         } catch (SQLException e) {

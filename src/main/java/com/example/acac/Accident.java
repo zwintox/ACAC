@@ -13,7 +13,7 @@ public class Accident {
     private String DriverPersonalID;
     private String DriverFirstName;
     private String DriverLastName;
-    private int DriverPhoneNumber;
+    private String DriverPhoneNumber;
     private String Händelseförlopp;
     private String SkadorPåBilen;
     private boolean PolisPåPlats;
@@ -28,7 +28,7 @@ public class Accident {
                     String DriverPersonalID,
                     String DriverFirstName,
                     String DriverLastName,
-                    int DriverPhoneNumber,
+                    String DriverPhoneNumber,
                     String Händelseförlopp,
                     String SkadorPåBilen,
                     boolean PolisPåPlats,
@@ -123,11 +123,11 @@ public class Accident {
         DriverLastName = driverLastName;
     }
 
-    public int getDriverPhoneNumber() {
+    public String getDriverPhoneNumber() {
         return DriverPhoneNumber;
     }
 
-    public void setDriverPhoneNumber(int driverPhoneNumber) {
+    public void setDriverPhoneNumber(String driverPhoneNumber) {
         DriverPhoneNumber = driverPhoneNumber;
     }
 

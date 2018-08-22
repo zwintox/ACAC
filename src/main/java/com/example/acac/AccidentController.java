@@ -21,34 +21,21 @@ public class AccidentController {
 
     @PostMapping("/addNewAccident")
 
-    public String addNewAccident(@RequestParam int ID,
-                                 @RequestParam String Regnr,
-                                 @RequestParam String Försäkringsbolag,
-                                 @RequestParam String Omständighet,
-                                 @RequestParam Date Skadedag,
-                                 @RequestParam String Skadeplats,
-                                 @RequestParam String DriverPersonalID,
-                                 @RequestParam String DriverFirstName,
-                                 @RequestParam String DriverLastName,
-                                 @RequestParam String DriverPhoneNumber,
-                                 @RequestParam String Händelseförlopp,
-                                 @RequestParam String SkadorPåBilen,
-                                 @RequestParam Boolean PolisPåPlats,
-                                 @RequestParam String Utandningsprov) {
-        accidentRepository.addNewAccident(ID,
-                Regnr,
-                Försäkringsbolag,
-                Omständighet,
-                Skadedag,
-                Skadeplats,
-                DriverPersonalID,
-                DriverFirstName,
-                DriverLastName,
-                DriverPhoneNumber,
-                Händelseförlopp,
-                SkadorPåBilen,
-                PolisPåPlats,
-                Utandningsprov);
+    public String addNewAccident(Accident accident) {
+        accidentRepository.addNewAccident(accident.getID(),
+                accident.getRegnr(),
+                accident.getFörsäkringsbolag(),
+                accident.getOmständighet(),
+                accident.getSkadedag(),
+                accident.getSkadeplats(),
+                accident.getDriverPersonalID(),
+                accident.getDriverFirstName(),
+                accident.getDriverLastName(),
+                accident.getDriverPhoneNumber(),
+                accident.getHändelseförlopp(),
+                accident.getSkadorPåBilen(),
+                accident.isPolisPåPlats(),
+                accident.getUtandningsprov());
 
                 return"confirmation";
     }

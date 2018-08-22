@@ -55,14 +55,16 @@
         <input type="text" th:field="*{DriverPhoneNumber}"><br>
 
         Beskriv händelseförloppet:<br>
-        <textarea name="message" th:field="*{HändelseFörlopp]" rows="10" cols="30">
+        <textarea name="message" th:field="*{Händelseförlopp]" rows="10" cols="30">
         </textarea>
 
         Var polisen på plats?<br>
-        <input type="radio" th:field="*{Polis}" name="Polis" value="Yes"> Ja<br>
-        <input type="radio" name="Polis" value="No"> Nej<br>
-        Skador på föraren:<br>
-        <select name="damage1"><br>
+        <input type="radio" th:field="*{PolisPåPlats}" name="Polis" value="Yes"> Ja<br>
+
+        Utandningsprov:
+            <select  th:field="*{Utandningsprov}">
+                <option th:value="'P'" >Positivt</option>
+                <option th:value="'N'" >Negativt</option></select>
 
         <button id="formBtn">Skicka</button>
     </form>
@@ -71,7 +73,7 @@
 
 <div id="accidentForm2">
 
-    Formulär angående andra föraren.
+    Formulär angående andra föraren.<br>
     <form>
         Registreringsnummer hos motpart:<br>
         <input type="text" th:field="*{regnrmotpart}"><br>
