@@ -1,12 +1,16 @@
 package com.example.acac;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Accident {
     private int ID;
-    private Date Skadedag;
     private String Regnr;
     private String Försäkringsbolag;
+    private String Omständighet;
+    private Date Skadedag;
+    private String SkadePlats;
+    private String EgnaSkador;
     private int DriverPersonalID;
     private String DriverFirstName;
     private String DriverLastName;
