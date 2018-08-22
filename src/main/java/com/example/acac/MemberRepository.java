@@ -1,5 +1,6 @@
 package com.example.acac;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,38 +18,32 @@ public class MemberRepository {
     public DataSource dataSource;
 
     Connection conn = null;
-    public void addMember(int ID,
-                          int personalNumber,
+    public void addMember(String personalNumber,
                           String firstName,
                           String lastName,
                           String city,
                           String address,
                           int zipCode,
                           String eMail,
-                          int phoneNumber,
+                          String phoneNumber,
                           String password) {
         try {
 
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO Member (personalNumber, " +
-                    "firstName," +
-                    "lastName," +
-                    "city," +
-                    "address," +
-                    "zipCode," +
-                    "eMail," +
-                    "phoneNumber," +
-                    "password) VALUES (?,?,?,?,?,?,?,?)", new String[]{"ID"});
-            ps.setInt(1, (personalNumber));
+            PreparedStatement ps = conn.prepareStatement("EXEC CreateUser @personalNumber = ?,@firstName = ?, @lastName = ?, @city = ?, @address = ?, @zipCode = ?,@eMail = ?, @phoneNumber = ?, @password = ?", new String[]{"id"});
+
+            ps.setString(1, personalNumber);
             ps.setString(2, firstName);
             ps.setString(3, lastName);
             ps.setString(4, city);
             ps.setString(5, address);
             ps.setInt(6, (zipCode));
             ps.setString(7, eMail);
-            ps.setInt(7, (phoneNumber));
+            ps.setString(7, phoneNumber);
             ps.setString(8, password);
             ps.executeUpdate();
+            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
