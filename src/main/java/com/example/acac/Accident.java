@@ -17,6 +17,39 @@ public class Accident {
     private int DriverPhoneNumber;
     private String Händelseförlopp;
     private String SkadorPåBilen;
+    private String Polis;
+
+    public String getOmständighet() {
+        return Omständighet;
+    }
+
+    public void setOmständighet(String omständighet) {
+        Omständighet = omständighet;
+    }
+
+    public String getSkadePlats() {
+        return SkadePlats;
+    }
+
+    public void setSkadePlats(String skadePlats) {
+        SkadePlats = skadePlats;
+    }
+
+    public String getEgnaSkador() {
+        return EgnaSkador;
+    }
+
+    public void setEgnaSkador(String egnaSkador) {
+        EgnaSkador = egnaSkador;
+    }
+
+    public String getPolis() {
+        return Polis;
+    }
+
+    public void setPolis(String polis) {
+        Polis = polis;
+    }
 
     public Accident(int ID,
                     Date skadedag,

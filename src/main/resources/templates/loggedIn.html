@@ -3,63 +3,66 @@
 <head>
     <h1>Välkommen att fylla i din skadeanmälan nedan:</h1>
     <meta charset="UTF-8">
-    <title>Acac</title>
+    <title>Acac Skadeformulär</title>
 </head>
-<body>
+<body bgcolor="#2f889a">
 
 <Button id="profileBtn">Min sida</Button>
 
 <div id="accidentForm">
-    <form th:action="addNewAccident" method="post" th:object>
+    <form th:action="addNewAccident" method="post" th:object="${accident}">
         Registreringsnummer på ditt fordon:<br>
-        <input type="text" th:field="Regnr"><br>
-        Omständighet:<br>
-        <select  th:field="*{Omständighet}">
-            <option th:value="'F'" th:text="Frontalkrock">Frontalkrock</option>
-            <option th:value="'B'" th:text="Backningsolycka">Backningsolycka</option>
-            <option th:value="'A'" th:text="Avkörning på väg">Avkörning på väg</option>
-            <option th:value="'S'" th:text="Sidokrock">Sidokrock</option>
-            <option th:value="'M'" th:text="Mindre skador">Mindre skador</option>
+        <input type="text" th:field="*{Regnr}"><br>
+
+        Försäkringsbolag:<br>
+        <select th:field="*{Försäkringsbolag}" name="bolag">
+            <option th:value="'A'" >Aktsam</option>
+            <option th:value="'F'" >Folksam</option>
+            <option th:value="'I'" >If</option>
+            <option th:value="'L'" >Länsförsäkringar</option>
+            <option th:value="'T'" >Trygghansa</option>
 
         </select><br>
-        Tidpunkt för olyckan:
+        Omständighet:<br>
+        <select  th:field="*{Omständighet}">
+            <option th:value="'F'" >Frontalkrock</option>
+            <option th:value="'B'" >Backningsolycka</option>
+            <option th:value="'A'" >Avkörning på väg</option>
+            <option th:value="'S'" >Sidokrock</option>
+            <option th:value="'M'" >Mindre skador</option>
+
+        </select><br>
+        Datum för olyckan:
         <div>
-            <input type="date" th:field="Skadedag" id="start" name="trip"
+            <input type="date" th:field="*{Skadedag}" id="start" name="trip"
                    value="2018-07-22"
                    min="2018-01-01" max="2018-12-31" />
         </div>
-        Försäkringsbolag:<br>
-        <select th:field="Försäkringsbolag" name="bolag">
-            <option th:value="'A'" th:text="Aktsam">Aktsam</option>
-            <option th:value="'F'" th:text="Folksam">Folksam</option>
-            <option th:value="'I'" th:text="If">If</option>
-            <option th:value="'L'" th:text="Länsförsäkringar">Länsförsäkringar</option>
-            <option th:value="'T'" th:text="Trygghansa">Trygghansa</option>
 
-        </select><br>
-        Var polisen på plats?<br>
-        <input type="radio" th:field="Polis" name="Polis" value="Yes"> Ja<br>
-        <input type="radio" name="Polis" value="No"> Nej<br>
-        Skador på föraren:<br>
-        <select name="damage1">
-            <option >Inga</option>
-            <option >Skall-skador</option>
-            <option >Kropps-skador</option>
-            <option >Mildare skador</option>
-            <option >Avliden</option>
-        </select><br>
-        Skador på passagerare:<br>
-        <select name="damage2">
-            <option >Inga</option>
-            <option >Skall-skador</option>
-            <option >Kropps-skador</option>
-            <option >Mildare skador</option>
-            <option >Avliden</option>
-        </select><br>
+        Skadeplats:<br>
+        <input type="text" th:field="*{Skadeplats}"><br>
+
+        Förarens personnummer:<br>
+        <input type="text" th:field="*{DriverPersonalID}"><br>
+
+        Förarens förnamn:<br>
+        <input type="text" th:field="*{DriverFirstName}"><br>
+
+        Förarens efternamn:<br>
+        <input type="text" th:field="*{DriverLastName}"><br>
+
+        Förarens telefonnummer:<br>
+        <input type="text" th:field="*{DriverPhoneNumber}"><br>
 
         Beskriv händelseförloppet:<br>
-        <textarea name="message" rows="10" cols="30">
+        <textarea name="message" th:field="*{HändelseFörlopp]" rows="10" cols="30">
         </textarea>
+
+        Var polisen på plats?<br>
+        <input type="radio" th:field="*{Polis}" name="Polis" value="Yes"> Ja<br>
+        <input type="radio" name="Polis" value="No"> Nej<br>
+        Skador på föraren:<br>
+        <select name="damage1"><br>
 
         <button id="formBtn">Skicka</button>
     </form>
@@ -70,38 +73,18 @@
 
     Formulär angående andra föraren.
     <form>
-        Namn:<br>
-        <input type="text"><br>
-        Efternamn:<br>
-        <input type="text"><br>
+        Registreringsnummer hos motpart:<br>
+        <input type="text" th:field="*{regnrmotpart}"><br>
         Telefonnummer:<br>
         <input type="text"><br>
         Regnummer på fordonet:<br>
         <input type="text"><br>
-        Skador på föraren av detta fordon:<br>
-        <select name="damage1">
-            <option >Inga</option>
-            <option >Skall-skador</option>
-            <option >Kropps-skador</option>
-            <option >Mildare skador</option>
-            <option >Avliden</option>
-        </select><br>
-        Skador på dess passagerare:<br>
-        <select name="damage2">
-            <option >Inga</option>
-            <option >Skall-skador</option>
-            <option >Kropps-skador</option>
-            <option >Mildare skador</option>
-            <option >Avliden</option>
-        </select><br>
-        Skador på andra inblandade:<br>
-        <select name="damage2">
-            <option >Inga</option>
-            <option >Skall-skador</option>
-            <option >Kropps-skador</option>
-            <option >Mildare skador</option>
-            <option >Avliden</option>
-        </select><br>
+        Skador hos motpart:<br>
+        <input type="text" th:field="*{skadormotpart}"><br>
+        Motpartens försäkringsbolag:
+        <input type="text" th:field="*{försäkringsbolag}"><br>
+
+
         <button id="formBtn2">Skicka</button>
     </form>
 </div>
