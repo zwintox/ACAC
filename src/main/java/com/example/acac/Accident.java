@@ -19,8 +19,12 @@ public class Accident {
     private boolean PolisPåPlats;
     private String Utandningsprov;
 
-    public Accident(int ID,
-                    String Regnr,
+    public Accident (){
+
+    }
+
+
+    public Accident(String Regnr,
                     String Försäkringsbolag,
                     String Omständighet,
                     Date Skadedag,
@@ -31,9 +35,7 @@ public class Accident {
                     String DriverPhoneNumber,
                     String Händelseförlopp,
                     String SkadorPåBilen,
-                    boolean PolisPåPlats,
                     String Utandningsprov) {
-        this.ID = ID;
         this.Regnr = Regnr;
         this.Försäkringsbolag = Försäkringsbolag;
         this.Omständighet = Omständighet;
@@ -45,7 +47,6 @@ public class Accident {
         this.DriverPhoneNumber = DriverPhoneNumber;
         this.Händelseförlopp = Händelseförlopp;
         this.SkadorPåBilen = SkadorPåBilen;
-        this.PolisPåPlats = PolisPåPlats;
         this.Utandningsprov = Utandningsprov;
 
 
