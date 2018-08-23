@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -17,6 +18,16 @@ public class AccidentController {
     @Autowired
     private AccidentRepository accidentRepository;
 
+
+    @GetMapping("/addNewAccident")
+
+    public String getNewAccident(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session !=null){
+            return "loggedIn";
+        }
+        return "index";
+    }
 
     @PostMapping("/addNewAccident")
 
@@ -34,27 +45,30 @@ public class AccidentController {
                                  @RequestParam boolean PolisPåPlats,
                                  @RequestParam String Utandningsprov,
                                  @RequestParam String regnrmotpart,
-
+                                HttpServletRequest request,
                                 Accident accident) {
+        HttpSession session = request.getSession(false);
+        if (session !=null){
 
-        accidentRepository.addNewAccident(
-                Regnr,
-                Försäkringsbolag,
-                Omständighet,
-                Skadedag,
-                Skadeplats,
-                DriverPersonalID,
-                DriverFirstName,
-                DriverLastName,
-                DriverPhoneNumber,
-                Händelseförlopp,
-                SkadorPåBilen,
-                PolisPåPlats,
-                Utandningsprov,
-                regnrmotpart,
-                1);
-
-
+            accidentRepository.addNewAccident(
+                    Regnr,
+                    Försäkringsbolag,
+                    Omständighet,
+                    Skadedag,
+                    Skadeplats,
+                    DriverPersonalID,
+                    DriverFirstName,
+                    DriverLastName,
+                    DriverPhoneNumber,
+                    Händelseförlopp,
+                    SkadorPåBilen,
+                    PolisPåPlats,
+                    Utandningsprov,
+                    regnrmotpart,
+                    1);
+            return "loggedIn";
+        }
         return "index";
     }
+
 }

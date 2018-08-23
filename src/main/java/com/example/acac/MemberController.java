@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class MemberController {
                                   @RequestParam int zipCode,
                                   @RequestParam String eMail,
                                   @RequestParam String phoneNumber,
-                                  @RequestParam String password) {
+                                  @RequestParam String password       ) {
         mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
         return "index";
     }
@@ -43,7 +44,7 @@ public class MemberController {
                               @RequestParam int zipCode,
                               @RequestParam String eMail,
                               @RequestParam String phoneNumber,
-                              @RequestParam String password) {
+                              @RequestParam String password      ) {
         mr.editMember(firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
         return "LoggedIn";
     }
