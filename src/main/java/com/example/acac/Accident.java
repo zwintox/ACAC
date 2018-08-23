@@ -1,11 +1,12 @@
 package com.example.acac;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
+import org.springframework.stereotype.Controller;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+
+
 
 import java.sql.Date;
 import java.util.List;
@@ -18,7 +19,8 @@ public class Accident {
     @NotEmpty
     private String Försäkringsbolag;
     private String Omständighet;
-
+    @DateTimeFormat
+    @NotNull
     private Date Skadedag;
     @NotEmpty
     private String Skadeplats;

@@ -26,9 +26,9 @@ public class AccidentController {
 
     @GetMapping("/addNewAccident")
 
-    public String getNewAccident(HttpServletRequest request){
+    public String getNewAccident(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session !=null){
+        if (session != null) {
             return "loggedIn";
         }
         return "index";
@@ -38,31 +38,32 @@ public class AccidentController {
 
 
     public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, HttpServletRequest request) {
-  HttpSession session = request.getSession(false);
-        if (session !=null){
+        HttpSession session = request.getSession(false);
+        if (session != null) {
             Member member = (Member) session.getAttribute("member");
-        if(bindingResult.hasErrors()){
-            System.out.println("funkar inte");
-        }else {
+            if(bindingResult.hasErrors()){
+                return "loggedIn";
+            }
+                accidentRepository.addNewAccident(
+                        accident.getRegnr(),
+                        accident.getFörsäkringsbolag(),
+                        accident.getOmständighet(),
+                        accident.getSkadedag(),
+                        accident.getSkadeplats(),
+                        accident.getDriverPersonalID(),
+                        accident.getDriverFirstName(),
+                        accident.getDriverLastName(),
+                        accident.getDriverPhoneNumber(),
+                        accident.getHändelseförlopp(),
+                        accident.getSkadorPåBilen(),
+                        accident.getPolisPåPlats(),
+                        accident.getUtandningsprov(),
+                        accident.getRegnrmotpart(),
+                        member.getID());
+                return "redirect:loggedIn";
 
-            accidentRepository.addNewAccident(
-                    accident.getRegnr(),
-                    accident.getFörsäkringsbolag(),
-                    accident.getOmständighet(),
-                    accident.getSkadedag(),
-                    accident.getSkadeplats(),
-                    accident.getDriverPersonalID(),
-                    accident.getDriverFirstName(),
-                    accident.getDriverLastName(),
-                    accident.getDriverPhoneNumber(),
-                    accident.getHändelseförlopp(),
-                    accident.getSkadorPåBilen(),
-                    accident.getPolisPåPlats(),
-                    accident.getUtandningsprov(),
-                    accident.getRegnrmotpart(),
-                    member.getID());
-            return "redirect:loggedIn";
+        } else {
+            return "index";
         }
-        return "index";
-}
+    }
 }

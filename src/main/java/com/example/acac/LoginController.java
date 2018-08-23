@@ -48,8 +48,8 @@ public class LoginController {
         }
 
 
-        @GetMapping ("/loggedin")
-        public  String loggedin ( HttpServletRequest request, Accident accident){
+        @GetMapping ("/loggedIn")
+        public  String loggedIn ( HttpServletRequest request, Accident accident){
 
             HttpSession session = request.getSession(false);
             if (session !=null){
