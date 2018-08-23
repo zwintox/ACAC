@@ -12,7 +12,18 @@ public class Member {
     private String phoneNumber;
     private String password;
 
-    public Member(String personalNumber, String firstName, String lastName, String city, String address, int zipCode, String eMail, String phoneNumber, String password) {
+    public Member(){}
+
+
+    public Member(String personalNumber,
+                  String firstName,
+                  String lastName,
+                  String city,
+                  String address,
+                  int zipCode,
+                  String eMail,
+                  String phoneNumber,
+                  String password) {
 
         this.personalNumber = personalNumber;
         this.firstName = firstName;

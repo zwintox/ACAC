@@ -40,7 +40,7 @@ public class LoginController {
                 session.setAttribute("member", member);
 
                 members.add(member);
-                return "redirect:loggedin";
+                return "redirect:loggedIn";
             } else {
                 return "index";
             }
@@ -48,7 +48,7 @@ public class LoginController {
 
         }
 
-        @GetMapping ("/loggedin")
+        @GetMapping ("/loggedIn")
         public  String loggedin (Accident accident){
             return "loggedIn";
         }

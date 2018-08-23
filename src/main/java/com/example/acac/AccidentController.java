@@ -3,12 +3,14 @@ package com.example.acac;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -20,41 +22,29 @@ public class AccidentController {
 
     @PostMapping("/addNewAccident")
 
-    public String addNewAccident(@RequestParam String Regnr,
-                                 @RequestParam String Försäkringsbolag,
-                                 @RequestParam String Omständighet,
-                                 @RequestParam Date Skadedag,
-                                 @RequestParam String Skadeplats,
-                                 @RequestParam String DriverPersonalID,
-                                 @RequestParam String DriverFirstName,
-                                 @RequestParam String DriverLastName,
-                                 @RequestParam String DriverPhoneNumber,
-                                 @RequestParam String Händelseförlopp,
-                                 @RequestParam String SkadorPåBilen,
-                                 @RequestParam boolean PolisPåPlats,
-                                 @RequestParam String Utandningsprov,
-                                 @RequestParam String regnrmotpart,
+    public String addNewAccident(@Valid Accident accident, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            System.out.println("funkar inte");
+        }else {
 
-                                Accident accident) {
+            accidentRepository.addNewAccident(
+                    accident.getRegnr(),
+                    accident.getFörsäkringsbolag(),
+                    accident.getOmständighet(),
+                    accident.getSkadedag(),
+                    accident.getSkadeplats(),
+                    accident.getDriverPersonalID(),
+                    accident.getDriverFirstName(),
+                    accident.getDriverLastName(),
+                    accident.getDriverPhoneNumber(),
+                    accident.getHändelseförlopp(),
+                    accident.getSkadorPåBilen(),
+                    accident.getPolisPåPlats(),
+                    accident.getUtandningsprov(),
+                    accident.getRegnrmotpart(),
+                    1);
+        }
 
-        accidentRepository.addNewAccident(
-                Regnr,
-                Försäkringsbolag,
-                Omständighet,
-                Skadedag,
-                Skadeplats,
-                DriverPersonalID,
-                DriverFirstName,
-                DriverLastName,
-                DriverPhoneNumber,
-                Händelseförlopp,
-                SkadorPåBilen,
-                PolisPåPlats,
-                Utandningsprov,
-                regnrmotpart,
-                1);
-
-
-        return "index";
+        return "loggedIn";
     }
 }
