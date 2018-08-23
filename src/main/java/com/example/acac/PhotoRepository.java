@@ -13,3 +13,4 @@ public class PhotoRepository {
     public void addPhoto(int ID, String source, int accidentID) {
     }
 }
+

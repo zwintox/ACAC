@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,22 +18,24 @@ public class MemberController {
     List<Member> members = new ArrayList<>();
 
     @GetMapping ("/")
-    public String getIndex(){
+    public String getIndex(Member member){
         return "index";
     }
 
 
     @PostMapping ("/")
-    public String registerMember (@RequestParam String personalNumber,
-                                  @RequestParam String firstName,
-                                  @RequestParam String lastName,
-                                  @RequestParam String city,
-                                  @RequestParam String address,
-                                  @RequestParam int zipCode,
-                                  @RequestParam String eMail,
-                                  @RequestParam String phoneNumber,
-                                  @RequestParam String password) {
-        mr.addMember(personalNumber,firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
+
+    public String addMember (Member member) {
+        mr.addMember(member.getPersonalNumber(),
+                member.getFirstName(),
+                member.getLastName(),
+                member.getCity(),
+                member.getAddress(),
+                member.getZipCode(),
+                member.geteMail(),
+                member.getPhoneNumber(),
+                member.getPassword());
+
         return "index";
     }
     @PostMapping ("/editMember")
@@ -43,9 +46,9 @@ public class MemberController {
                               @RequestParam int zipCode,
                               @RequestParam String eMail,
                               @RequestParam String phoneNumber,
-                              @RequestParam String password) {
+                              @RequestParam String password      ) {
         mr.editMember(firstName,lastName,city,address,zipCode,eMail,phoneNumber,password);
-        return "LoggedIn";
+        return "loggedIn";
     }
 
 

@@ -1,23 +1,44 @@
 package com.example.acac;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.stereotype.Controller;
+
+import javax.validation.constraints.*;
+
+
+
 import java.sql.Date;
 import java.util.List;
 
 public class Accident {
     private int ID;
+    @NotEmpty
+    @Pattern(regexp="^[A-Za-z]{3}[0-9]{2}[A-Za-z0-9]*$")
     private String Regnr;
+    @NotEmpty
     private String Försäkringsbolag;
     private String Omständighet;
+    @DateTimeFormat
+    @NotNull
     private Date Skadedag;
+    @NotEmpty
     private String Skadeplats;
+    @NotEmpty
+    @Size (max=12, min=10)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String DriverPersonalID;
     private String DriverFirstName;
     private String DriverLastName;
+    @NotEmpty
     private String DriverPhoneNumber;
+    @NotEmpty
     private String Händelseförlopp;
     private String SkadorPåBilen;
     private boolean PolisPåPlats;
     private String Utandningsprov;
+    @NotEmpty
+    @Size (max=6, min=6)
     private String regnrmotpart;
 
     public Accident (){
