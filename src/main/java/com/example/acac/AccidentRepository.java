@@ -47,7 +47,8 @@ public class AccidentRepository {
             ps.setString(10, Händelseförlopp);
             ps.setString(11, SkadorPåBilen);
             ps.setBoolean(12, PolisPåPlats);
-            ps.setString(13, Utandningsprov);         ps.setString(14, regnrmotpart);
+            ps.setString(13, Utandningsprov);
+            ps.setString(14, regnrmotpart);
             ps.setInt(15, ID);
 
             ps.executeQuery();

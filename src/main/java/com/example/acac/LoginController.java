@@ -39,13 +39,14 @@ public class LoginController {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("member", member);
                 members.add(member);
-                return "redirect:loggedin";
+                return "redirect:loggedIn";
             } else {
                 return "index";
             }
 
 
         }
+
 
         @GetMapping ("/loggedin")
         public  String loggedin ( HttpServletRequest request, Accident accident){
@@ -55,5 +56,6 @@ public class LoginController {
                 return "loggedIn";
             }
             return "index";
+
         }
 }

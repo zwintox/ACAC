@@ -13,6 +13,7 @@
     <form th:action="addNewAccident" method="post" th:object="${accident}">
         Registreringsnummer på ditt fordon:<br>
         <input type="text" th:field="*{Regnr}"><br>
+        <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
 
         Försäkringsbolag:<br>
         <select th:field="*{Försäkringsbolag}" name="bolag">
@@ -21,6 +22,7 @@
             <option th:value="'I'" >If</option>
             <option th:value="'L'" >Länsförsäkringar</option>
             <option th:value="'T'" >Trygghansa</option>
+            <p th:if="${#fields.hasErrors('Försäkringsbolag')}" th:errors="*{Försäkringsbolag}"></p>
 
         </select><br>
         Omständighet:<br>
@@ -37,13 +39,17 @@
             <input type="date" th:field="*{Skadedag}" id="start" name="trip"
                    value="2018-07-22"
                    min="2018-01-01" max="2018-12-31" />
+            <p th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></p>
+
         </div>
 
         Skadeplats:<br>
         <input type="text" th:field="*{Skadeplats}"><br>
+        <p th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></p>
 
         Förarens personnummer:<br>
         <input type="text" th:field="*{DriverPersonalID}"><br>
+        <p th:if="${#fields.hasErrors('DriverPersonalID')}" th:errors="*{DriverPersonalID}"></p>
 
         Förarens förnamn:<br>
         <input type="text" th:field="*{DriverFirstName}"><br>
@@ -53,17 +59,20 @@
 
         Förarens telefonnummer:<br>
         <input type="text" th:field="*{DriverPhoneNumber}"><br>
+        <p th:if="${#fields.hasErrors('DriverPhoneNumber')}" th:errors="*{DriverPhoneNumber}"></p>
 
         Beskriv händelseförloppet:<br>
         <textarea name="message" th:field="*{Händelseförlopp}" rows="10" cols="30">
         </textarea>
         <br>
+        <p th:if="${#fields.hasErrors('Händelseförlopp')}" th:errors="*{Händelseförlopp}"></p>
         Skador på er bil:<br>
         <input type="text" th:field="*{SkadorPåBilen}"><br>
 
         <br>
         Var polisen på plats?
         <input type="checkbox" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes"> Ja<br>
+        <p th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></p>
 
         Utandningsprov:
             <select  th:field="*{Utandningsprov}">
@@ -73,6 +82,7 @@
 
         Registreringsnummer motpart:<br>
         <input type="text" th:field="*{regnrmotpart}"><br>
+        <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
 
         <button id="formBtn">Skicka</button>
     </form>
