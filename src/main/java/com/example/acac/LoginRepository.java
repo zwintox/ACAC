@@ -15,7 +15,7 @@ public class LoginRepository {
     @Autowired
     public DataSource dataSource;
 
-    private int memberid;
+
 
 
     public Member getMember(String eMail, String password) {
@@ -27,7 +27,7 @@ public class LoginRepository {
             ps.setString(2, password);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
-                return new Member(resultSet.getInt("ID"));
+                return new Member(resultSet.getInt("ID"),eMail, password, resultSet.getString("personalNumber"));
             }
             conn.close();
 

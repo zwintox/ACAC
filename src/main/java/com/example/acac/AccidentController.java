@@ -49,6 +49,9 @@ public class AccidentController {
                                 Accident accident) {
         HttpSession session = request.getSession(false);
         if (session !=null){
+            Member member = (Member) session.getAttribute("member");
+
+
 
             accidentRepository.addNewAccident(
                     Regnr,
@@ -65,8 +68,8 @@ public class AccidentController {
                     PolisPåPlats,
                     Utandningsprov,
                     regnrmotpart,
-                    1);
-            return "loggedIn";
+                    member.getID());
+            return "redirect:loggedIn";
         }
         return "index";
     }
