@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <h1>Välkommen att fylla i din skadeanmälan nedan:</h1>
+    <h1>Välkommen att fylla i din skadeanmälan</h1>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="loggedinStyle.css">
     <title>Acac Skadeformulär</title>
 </head>
 <body bgcolor="#2f889a">
 
-<Button id="profileBtn">Min sida</Button>
 
-<div id="accidentForm">
-    <form th:action="addNewAccident" method="post" th:object="${accident}">
+<div class="flexContainer2">
+    <Button id="profileBtn">Min sida</Button>
+    <Button id="logBtn">Logga ut</Button>
+
+</div>
+
+<div class="flexcontainer1">
+    <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}">
         Registreringsnummer på ditt fordon:<br>
         <input type="text" th:field="*{Regnr}"><br>
 
@@ -33,12 +39,9 @@
 
         </select><br>
         Datum för olyckan:
-        <div>
             <input type="date" th:field="*{Skadedag}" id="start" name="trip"
                    value="2018-07-22"
-                   min="2018-01-01" max="2018-12-31" />
-        </div>
-
+                   min="2018-01-01" max="2018-12-31" /><br>
         Skadeplats:<br>
         <input type="text" th:field="*{Skadeplats}"><br>
 
@@ -74,10 +77,16 @@
         Registreringsnummer motpart:<br>
         <input type="text" th:field="*{regnrmotpart}"><br>
 
+
+
         <button id="formBtn">Skicka</button>
     </form>
 </div>
 
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" /><br/><br/>
+        <input type="submit" value="Submit" />
+    </form>
 
 
 
