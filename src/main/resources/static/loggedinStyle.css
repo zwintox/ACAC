@@ -1,0 +1,83 @@
+h1{
+    display:flex;
+    justify-content: center;
+    color:white;
+    font-family: Helvetica;
+}
+
+.flexContainer1{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color:teal;
+    height:100px;
+
+}
+
+#accidentForm {
+    color:gray();
+    font-family: Helvetica;
+    border-radius: 10px;
+    width: 50%;
+    background-color:#AED6DE;
+    color: #2f889a;
+    font-family: Helvetica;
+    font-size: 20px;
+
+}
+#profileBtn{
+    color:white;
+    width: 100px;
+    background-color: #0040ff;
+    font-family: Helvetica;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#logBtn{
+    color:white;
+    width: 100px;
+    background-color: #0040ff;
+    font-family: Helvetica;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+input {
+    width: 50%;
+}
+
+.flexContainer2 {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+
+}
+
+#formBtn{
+    color:white;
+    background-color: #0040ff;
+    font-family: Helvetica;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
