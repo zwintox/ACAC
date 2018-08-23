@@ -40,6 +40,13 @@ public class Member {
         this.ID = ID;
     }
 
+    public Member(int ID, String personalNumber, String eMail, String password) {
+        this.ID = ID;
+        this.personalNumber = personalNumber;
+        this.eMail = eMail;
+        this.password = password;
+    }
+
     public int getID() {
         return ID;
     }

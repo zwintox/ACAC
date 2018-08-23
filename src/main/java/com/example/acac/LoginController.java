@@ -38,7 +38,6 @@ public class LoginController {
             if (member != null){
                 HttpSession session = request.getSession(true);
                 session.setAttribute("member", member);
-
                 members.add(member);
                 return "redirect:loggedIn";
             } else {
@@ -48,8 +47,15 @@ public class LoginController {
 
         }
 
-        @GetMapping ("/loggedIn")
-        public  String loggedin (Accident accident){
-            return "loggedIn";
+
+        @GetMapping ("/loggedin")
+        public  String loggedin ( HttpServletRequest request, Accident accident){
+
+            HttpSession session = request.getSession(false);
+            if (session !=null){
+                return "loggedIn";
+            }
+            return "index";
+
         }
 }
