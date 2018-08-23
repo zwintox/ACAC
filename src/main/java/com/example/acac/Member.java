@@ -1,18 +1,37 @@
 package com.example.acac;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Member {
     private int ID;
+    @Size(max = 12, min = 10)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String personalNumber;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
     private String city;
+    @NotEmpty
     private String address;
+    @Size(max = 5, min = 5)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private int zipCode;
+    @Email
     private String eMail;
+    @Size(max = 15, min = 7)
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String phoneNumber;
+    @Size(max = 20, min = 8)
     private String password;
 
-    public Member(){}
+    public Member() {
+    }
 
 
     public Member(String personalNumber,
