@@ -91,6 +91,15 @@ jQuery(document).ready(function($){
         $form_forgot_password.addClass('is-selected');
     }
 
+    function show_signup() {
+        signup_selected();
+        $form_modal.addClass('is-visible');
+    }
+
+    if(signupFailed) {
+        show_signup();
+    }
+
     //REMOVE THIS - it's just to show error messages
    /* $form_login.find('input[type="submit"]').on('click', function(event){
         event.preventDefault();
