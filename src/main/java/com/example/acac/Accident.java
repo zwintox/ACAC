@@ -3,6 +3,7 @@ package com.example.acac;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.*;
 
@@ -18,6 +19,7 @@ public class Accident {
     @NotEmpty
     private String Försäkringsbolag;
     private String Omständighet;
+
     private Date Skadedag;
     @NotEmpty
     private String Skadeplats;
@@ -40,7 +42,9 @@ public class Accident {
     @Pattern(regexp = "^[A-Za-z]{3}[0-9]{2}[A-Za-z0-9]*$")
     private String regnrmotpart;
 
+
     public Accident() {
+
 
     }
 

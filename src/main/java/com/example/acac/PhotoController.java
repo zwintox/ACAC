@@ -1,104 +1,136 @@
 package com.example.acac;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 @Controller
 public class PhotoController {
     @Autowired
     private PhotoRepository photoRepository;
 
+    private static final Logger logger =  LoggerFactory
+            .getLogger(PhotoController.class);
 
-    private static String UPLOADED_FOLDER = "//temp//";
+    /**
+     * Upload single file using Spring Controller
+     */
 
-    @GetMapping("/addphoto")
-    public String index() {
-        return "index";
-    }
 
-    @PostMapping("/addphoto") // //new annotation since 4.3
-    public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+    /**
+     * Upload multiple file using Spring Controller
+     */
+  /*  @RequestMapping(value = "/uploadMultipleFile", method = RequestMethod.POST)
+    public @ResponseBody
+    String uploadMultipleFileHandler(@RequestParam("name") String[] names,
+                                     @RequestParam("file") MultipartFile[] files,
+                                     HttpServletRequest request) {
+        System.out.println("HEEEJ");
+        HttpSession session = request.getSession(false);
+        if(session !=null){
 
-        if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
+        if (files.length != names.length)
+            return "Mandatory information missing";
+
+        String message = "";
+        for (int i = 0; i < files.length; i++) {
+            MultipartFile file = files[i];
+            String name = names[i];
+            try {
+                byte[] bytes = file.getBytes();
+
+                // Creating the directory to store file
+                String workingDir = System.getProperty("user.dir");
+
+                System.out.format("Working Dir: %s", workingDir);
+                String rootPath = System.getProperty("catalina.home");
+                File dir = new File(workingDir + File.separator + "src" + File.separator + "main" + File.separator + "images" + File.separator + "tmpFiles" + File.separator + session.getId());
+                if (!dir.exists())
+                    dir.mkdirs();
+
+                // Create the file on server
+                File serverFile = new File(dir.getAbsolutePath()
+                        + File.separator + name);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+                logger.info("Server File Location=" + serverFile.getAbsolutePath());
+
+                message = message + "You successfully uploaded file=" + name
+                        + "<br />";
+            } catch (Exception e) {
+                return "You failed to upload " + name + " => " + e.getMessage();
+            }
+            return message;
         }
 
-        try {
+        }
+        return "index";
 
-            // Get the file and save it somewhere
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            Files.write(path, bytes);
-
-            redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        return "redirect:/uploadStatus";
-    }
-
-    @GetMapping("/uploadStatus")
-    public String uploadStatus() {
-        return "index";
-    }
+*/
 
 
-    @RequestMapping(value = "/user/uploadFile", method = RequestMethod.POST)
-    public ModelAndView handleFileUpload(ModelMap model, @RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, Member member) throws IOException {
+
+
+
+  /*
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public @ResponseBody
+    String uploadFileHandler(@RequestParam("name") String name,
+                             @RequestParam("file")
+                                     MultipartFile file,
+                            HttpServletRequest request) {
 
         if (!file.isEmpty()) {
-            //filter for checking file extewnsion
-            if (file.getContentType().equalsIgnoreCase("image/jpg") || file.getContentType().equalsIgnoreCase("image/jpeg")) {
-                //if file is >2 MB or < 2MB
-                double size = file.getSize();
-                double kilobytes = (size / 1024);
-                double megabytes = (kilobytes / 1024);
-                if (megabytes < 2) {
-                      {
-                        byte[] bytes = file.getBytes();
-                        String filePath = request.getRealPath("/") + "yourFolderName\\ProfileImages\\" + member.getID() + ".jpg";
-                        BufferedOutputStream stream =
-                                new BufferedOutputStream(new FileOutputStream(new File(filePath)));
-                        stream.write(bytes);
-                        stream.close();
+            try {
+                byte[] bytes = file.getBytes();
 
-                        //console call
-                    }
+                // Creating the directory to store file
+               // String rootPath = System.getProperty("catalina.home");
+                String workingDir = System.getProperty("user.dir");
 
-                  /*  else{
-                        model.put("error", "Please select File less than 2 MB");
-                        return new ModelAndView("uploadPhotoTile");
-                    }*/
-                } else {
-                    model.put("error", "Please select JPEG File");
-                    return new ModelAndView("uploadPhotoTile");
-                }
-            } else {
-                model.put("error", "Please select File");
-                return new ModelAndView("uploadPhotoTile");
+                System.out.format("Working Dir: %s", workingDir);
+
+                File dir = new File( workingDir + File.separator + "tmpFiles");
+                if (!dir.exists())
+                    dir.mkdirs();
+
+                // Create the file on server
+                File serverFile = new File( workingDir + File.separator + name);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+                logger.info("Server File Location="
+                        + serverFile.getAbsolutePath());
+
+                return "You successfully uploaded file=" + name;
+            } catch (Exception e) {
+                return "You failed to upload " + name + " => " + e.getMessage();
             }
+        } else {
+            return "You failed to upload " + name
+                    + " because the file was empty.";
         }
-        return new ModelAndView("loggedIn");
     }
-
+*/
 }
