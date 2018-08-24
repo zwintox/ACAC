@@ -17,53 +17,12 @@
         <Button class="profileBtn">Logga ut</Button>
     </div>
 
-
-
-<div class="flexContainer2">
-    <Button id="profileBtn">Min sida</Button>
-    <Button id="logBtn">Logga ut</Button>
-
 </div>
 
 <div class="flexcontainer1">
     <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}">
-        Registreringsnummer på ditt fordon:<br>
-        <input type="text" th:field="*{Regnr}"><br>
-        <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
 
-        Försäkringsbolag:<br>
-        <select th:field="*{Försäkringsbolag}" name="bolag">
-            <option th:value="''" ></option>
-            <option th:value="'A'" >Aktsam</option>
-            <option th:value="'F'" >Folksam</option>
-            <option th:value="'I'" >If</option>
-            <option th:value="'L'" >Länsförsäkringar</option>
-            <option th:value="'T'" >Trygghansa</option>
-            <p th:if="${#fields.hasErrors('Försäkringsbolag')}" th:errors="*{Försäkringsbolag}"></p>
-
-        </select><br>
-        Omständighet:<br>
-        <select  th:field="*{Omständighet}">
-            <option th:value="''" ></option>
-            <option th:value="'F'" >Frontalkrock</option>
-            <option th:value="'B'" >Backningsolycka</option>
-            <option th:value="'A'" >Avkörning på väg</option>
-            <option th:value="'S'" >Sidokrock</option>
-            <option th:value="'M'" >Mindre skador</option>
-
-        </select><br>
-        Datum för olyckan:
-            <input type="date" th:field="*{Skadedag}" id="start" name="trip"
-                   value="2018-07-22"
-
-                   min="2018-01-01" max="2018-12-31" /><br>
-
-                   
-            <p th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></p>
-
-
-
-            <h1>Skadeanmälan</h1>
+           <h1>Skadeanmälan</h1>
             <br>
             <input class="formInput"  type="text" th:field="*{Regnr}" placeholder="Registreringsnummer"><br>
             <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
