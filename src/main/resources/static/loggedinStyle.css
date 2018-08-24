@@ -2,34 +2,53 @@ h1{
     display:flex;
     justify-content: center;
     color:white;
-    font-family: Helvetica;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    color:#3599ae;
+
 }
 
 .flexContainer1{
     display:flex;
     justify-content: center;
-    align-items:center;
-    background-color:teal;
-    height:100px;
+
+}
+
+img{
+    height: 70px;
+
+}
+
+#circle{
+    display:flex;
+    border-radius: 120px;
+    background-color:#0040FF;
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    justify-content:flex-end;
 
 }
 
 #accidentForm {
     color:gray();
-    font-family: Helvetica;
-    border-radius: 10px;
+    font-family: Arial;
     width: 50%;
-    background-color:#AED6DE;
-    color: #2f889a;
-    font-family: Helvetica;
-    font-size: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+    font-family: Arial;
+    font-size: 15px;
 
 }
-#profileBtn{
+.profileBtn{
     color:white;
     width: 100px;
-    background-color: #0040ff;
-    font-family: Helvetica;
+    background-color: #73B0BC;
+    font-family: Arial;
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -40,21 +59,6 @@ h1{
     cursor: pointer;
 }
 
-#logBtn{
-    color:white;
-    width: 100px;
-    background-color: #0040ff;
-    font-family: Helvetica;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-
-}
 input {
     width: 50%;
 }
@@ -62,13 +66,12 @@ input {
 .flexContainer2 {
     display: flex;
     justify-content: flex-end;
-    flex-direction: column;
 
 }
 
-#formBtn{
+.formBtn{
     color:white;
-    background-color: #0040ff;
+    background-color: #2f889a;
     font-family: Helvetica;
     border: none;
     padding: 15px 32px;
@@ -79,5 +82,21 @@ input {
     margin: 4px 2px;
     cursor: pointer;
 
+}
+
+.formInput{
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    width: 300px;
+    height: 20px;
+    color:black;
+
+}
+
+.newColumn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
