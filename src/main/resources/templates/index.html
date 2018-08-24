@@ -8,20 +8,27 @@
     <script src="jquery.min.js" type="text/javascript"></script>
     <script src="jquery-ui.min.js" type="text/javascript"></script>
     <script src="modernizr-custom.js" type="text/javascript"></script>
+    <script src="js.js" type="text/javascript"></script>
+    <script src=" //cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js" type="text/javascript"></script>
+    <script src=" //cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js" type="text/javascript"></script>
+    <script src=" https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/bas.js" type="text/javascript"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/OrbitControls-2.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript"></script>
 </head>
 <body>
+
 <header role="banner">
     <div id="cd-logo"><a href="#0"><img src="ACAClogga2.png" alt="Logo"></a></div>
 
-    <nav class="main-nav">
-        <ul>
-            <!-- inser more links here -->
-            <li><a class="cd-signin" href="#0">Logga in</a></li>
-            <li><a class="cd-signup" href="#0">Skapa en ny användare</a></li>
-        </ul>
-    </nav>
 </header>
-
+<nav class="main-nav">
+    <ul>
+        <!-- inser more links here -->
+        <li><a class="cd-signin" href="#0">Logga in</a></li>
+        <li><a class="cd-signup" href="#0">Skapa en ny användare</a></li>
+    </ul>
+</nav>
+<div id="three-container"></div>
 <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
     <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
         <ul class="cd-switcher">
@@ -30,7 +37,9 @@
         </ul>
 
         <div id="cd-login"> <!-- log in form -->
-            <form class="cd-form" th:action="@{login}" method="post">
+            <form class="cd-form
+
+" th:action="@{login}" method="post">
                 <p class="fieldset">
                     <label class="image-replace cd-email" for="signin-email">E-mail</label>
                     <input class="full-width has-padding has-border" id="signin-email" type="email" name="eMail" placeholder="E-mail">
@@ -39,7 +48,7 @@
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signin-password">Lösenord</label>
-                    <input class="full-width has-padding has-border" id="signin-password" type="password" name="password"  placeholder="Password">
+                    <input class="full-width has-padding has-border" id="signin-password" type="password" name="password"  placeholder="Lösenord">
                     <a href="#0" class="hide-password">Dölj</a>
                     <span class="cd-error-message">Felaktigt lösenord.</span>
                 </p>
@@ -118,7 +127,7 @@
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signup-password">Lösenord</label>
-                    <input class="full-width has-padding has-border" th:field="*{password}" name="password" id="signup-password" type="text"  placeholder="Password">
+                    <input class="full-width has-padding has-border" th:field="*{password}" name="password" id="signup-password" type="text"  placeholder="Lösenord">
                     <a href="#0" class="hide-password">Dölj</a>
                     <span class="cd-error-message">Fyll o ditt lösenord här.</span>
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
@@ -149,17 +158,19 @@
                 </p>
             </form>
 
+
             <p class="cd-form-bottom-message"><a href="#0">Tillbaka till logga in</a></p>
         </div> <!-- cd-reset-password -->
         <a href="#0" class="cd-close-form">Stäng</a>
-    </div> <!-- cd-user-modal-container -->
-</div> <!-- cd-user-modal -->
+</div>
+
+    </div> 
+</div> 
 <script th:if="${error}">
     var signupFailed = true;
 </script>
 <script th:unless="${error}">
     var signupFailed = false;
 </script>
-<script src="js.js"></script>
 </body>
 </html>
