@@ -60,6 +60,7 @@ public class AccidentController {
                         accident.getUtandningsprov(),
                         accident.getRegnrmotpart(),
                         member.getID());
+            System.out.println(accident.getSkadedag());
                 return "redirect:loggedIn";
 
         } else {
