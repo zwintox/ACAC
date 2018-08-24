@@ -3,6 +3,7 @@ package com.example.acac;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.*;
 
@@ -19,8 +20,7 @@ public class Accident {
     @NotEmpty
     private String Försäkringsbolag;
     private String Omständighet;
-    @DateTimeFormat
-    @NotNull
+
     private Date Skadedag;
     @NotEmpty
     private String Skadeplats;
@@ -40,6 +40,9 @@ public class Accident {
     @NotEmpty
     @Size (max=6, min=6)
     private String regnrmotpart;
+
+    //Photos
+    private Photo photo;
 
     public Accident (){
 

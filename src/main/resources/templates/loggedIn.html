@@ -16,7 +16,7 @@
 </div>
 
 <div class="flexcontainer1">
-    <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}">
+    <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}" enctype="multipart/form-data">
         Registreringsnummer på ditt fordon:<br>
         <input type="text" th:field="*{Regnr}"><br>
         <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
@@ -49,7 +49,7 @@
                    
             <p th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></p>
 
-        </div>
+
 
 
         Skadeplats:<br>
@@ -93,16 +93,18 @@
         <input type="text" th:field="*{regnrmotpart}"><br>
         <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
 
+        <br>
 
+        File1 to upload: <input type="file" name="file"><br />
+        Name1: <input type="text" name="name"><br /> <br />
+        File2 to upload: <input type="file" name="file"><br />
+        Name2: <input type="text" name="name"><br /> <br />
 
         <button id="formBtn">Skicka</button>
     </form>
 </div>
 
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-        <input type="file" name="file" /><br/><br/>
-        <input type="submit" value="Submit" />
-    </form>
+
 
 
 
