@@ -64,48 +64,56 @@
                     <label class="image-replace cd-förnamn" for="signup-förnamn">Förnamn</label>
                     <input class="full-width has-padding has-border" th:field="*{firstName}"name="firstName" id="signup-förnamn" type="förnamn" placeholder="Förnamn">
                     <span class="cd-error-message">Fyll i ditt förnamn här.</span>
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-efternamn" for="signup-efternamn">Efternamn</label>
                     <input class="full-width has-padding has-border" th:field="*{lastName}" name="lastName" id="signup-efternamn" type="efternamn" placeholder="Efternamn">
                     <span class="cd-error-message">Fyll i ditt efternamn här.</span>
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-adress" for="signup-adress">Adress</label>
                     <input class="full-width has-padding has-border" th:field="*{address}" name="address" id="signup-adress" type="adress" placeholder="Adress">
                     <span class="cd-error-message">Fyll i din adress här.</span>
+                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-city" for="signup-city">City</label>
                     <input class="full-width has-padding has-border" th:field="*{city}" name="city" id="signup-city" type="city" placeholder="City">
                     <span class="cd-error-message">Fyll i din postort</span>
+                <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-zipcode" for="signup-zipcode">Postnummer</label>
                     <input class="full-width has-padding has-border" th:field="*{zipCode}" name="zipCode"id="signup-zipcode" type="zipcode" placeholder="Postnummer">
                     <span class="cd-error-message">Fyll i ditt postnummer</span>
+                <p th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-telefonnummer" for="signup-telefonnummer">Telefonnummer</label>
                     <input class="full-width has-padding has-border" th:field="*{phoneNumber}" name="phoneNumber"id="signup-telefonnummer" type="telefonnummer" placeholder="Telefonnummer">
                     <span class="cd-error-message">Fyll i ditt telefonnummer här.</span>
+                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-personnummer" for="signup-personnummer">Personnummer</label>
                     <input class="full-width has-padding has-border" th:field="*{personalNumber}" name="personalNumber" id="signup-personnummer" type="personnummer" placeholder="Personnummer">
                     <span class="cd-error-message">Fyll i ditt personnummer här.</span>
+                <p th:if="${#fields.hasErrors('personalNumber')}" th:errors="*{personalNumber}"></p>
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-email" for="signup-email">E-mail</label>
                     <input class="full-width has-padding has-border" th:field="*{eMail}" name="eMail" id="signup-email" type="email" placeholder="E-mail">
                     <span class="cd-error-message">Fyll i din email här.</span>
+                <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"></p>
                 </p>
 
                 <p class="fieldset">
@@ -113,6 +121,7 @@
                     <input class="full-width has-padding has-border" th:field="*{password}" name="password" id="signup-password" type="text"  placeholder="Password">
                     <a href="#0" class="hide-password">Dölj</a>
                     <span class="cd-error-message">Fyll o ditt lösenord här.</span>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 </p>
 
                 <p class="fieldset">
@@ -124,7 +133,7 @@
                     <input class="full-width has-padding" type="submit" value="Skapa en ny användare">
                 </p>
             </form>
-
+        </div>
         <div id="cd-reset-password"> <!-- reset password form -->
             <p class="cd-form-message">Glömt ditt lösenord? Fyll i din e-mail här så skickar vi ett nytt.</p>
 
@@ -145,6 +154,12 @@
         <a href="#0" class="cd-close-form">Stäng</a>
     </div> <!-- cd-user-modal-container -->
 </div> <!-- cd-user-modal -->
+<script th:if="${error}">
+    var signupFailed = true;
+</script>
+<script th:unless="${error}">
+    var signupFailed = false;
+</script>
 <script src="js.js"></script>
 </body>
 </html>
