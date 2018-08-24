@@ -17,12 +17,12 @@
         <Button class="profileBtn">Logga ut</Button>
     </div>
 
-</div>
 
 <div class="flexcontainer1">
     <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}">
 
            <h1>Skadeanmälan</h1>
+
             <br>
             <input class="formInput"  type="text" th:field="*{Regnr}" placeholder="Registreringsnummer"><br>
             <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
@@ -56,6 +56,7 @@
             <br>
             <input class="formInput" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats"><br>
             <p th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></p>
+
 
             <br>
             <input class="formInput"  type="text" th:field="*{DriverPersonalID}" placeholder="Förarens personnummer"><br>
