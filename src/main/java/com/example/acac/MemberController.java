@@ -1,7 +1,9 @@
 package com.example.acac;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +30,9 @@ public class MemberController {
 
     @PostMapping("/")
 
-    public String addMember(@Valid Member member, BindingResult bindingResult) {
+    public String addMember(@Valid Member member, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("error", true);
             return "index";
         } else {
             mr.addMember(member.getPersonalNumber(),
@@ -41,7 +44,7 @@ public class MemberController {
                     member.geteMail(),
                     member.getPhoneNumber(),
                     member.getPassword());
-
+            model.addAttribute("error",false);
             return "index";
         }
     }

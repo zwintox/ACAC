@@ -3,13 +3,14 @@ package com.example.acac;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class Member {
     private int ID;
     @Size(max = 12, min = 10)
-    @NumberFormat(style = NumberFormat.Style.NUMBER)
+    @NumberFormat
     private String personalNumber;
     @NotEmpty
     private String firstName;
@@ -19,13 +20,13 @@ public class Member {
     private String city;
     @NotEmpty
     private String address;
-    @Size(max = 5, min = 5)
-    @NumberFormat(style = NumberFormat.Style.NUMBER)
+    @Max (99999)
+    @NumberFormat
     private int zipCode;
     @Email
     private String eMail;
     @Size(max = 15, min = 7)
-    @NumberFormat(style = NumberFormat.Style.NUMBER)
+    @NumberFormat
     private String phoneNumber;
     @Size(max = 20, min = 8)
     private String password;

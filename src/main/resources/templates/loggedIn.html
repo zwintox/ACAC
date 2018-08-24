@@ -23,6 +23,7 @@
 
         Försäkringsbolag:<br>
         <select th:field="*{Försäkringsbolag}" name="bolag">
+            <option th:value="''" ></option>
             <option th:value="'A'" >Aktsam</option>
             <option th:value="'F'" >Folksam</option>
             <option th:value="'I'" >If</option>
@@ -33,6 +34,7 @@
         </select><br>
         Omständighet:<br>
         <select  th:field="*{Omständighet}">
+            <option th:value="''" ></option>
             <option th:value="'F'" >Frontalkrock</option>
             <option th:value="'B'" >Backningsolycka</option>
             <option th:value="'A'" >Avkörning på väg</option>
@@ -48,8 +50,6 @@
 
                    
             <p th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></p>
-
-        </div>
 
 
         Skadeplats:<br>
@@ -85,6 +85,7 @@
 
         Utandningsprov:
             <select  th:field="*{Utandningsprov}">
+                <option th:value="''" ></option>
                 <option th:value="'P'" >Positivt</option>
                 <option th:value="'N'" >Negativt</option></select>
         <br>

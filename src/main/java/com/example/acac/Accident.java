@@ -18,15 +18,15 @@ public class Accident {
     @NotEmpty
     private String Försäkringsbolag;
     private String Omständighet;
-    @DateTimeFormat
-    @NotNull
     private Date Skadedag;
     @NotEmpty
     private String Skadeplats;
     @Size(max = 12, min = 10)
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String DriverPersonalID;
+    @NotEmpty
     private String DriverFirstName;
+    @NotEmpty
     private String DriverLastName;
     @Size(max = 15, min = 7)
     @NumberFormat(style = NumberFormat.Style.NUMBER)

@@ -133,7 +133,7 @@
                     <input class="full-width has-padding" type="submit" value="Skapa en ny användare">
                 </p>
             </form>
-
+        </div>
         <div id="cd-reset-password"> <!-- reset password form -->
             <p class="cd-form-message">Glömt ditt lösenord? Fyll i din e-mail här så skickar vi ett nytt.</p>
 
@@ -154,6 +154,12 @@
         <a href="#0" class="cd-close-form">Stäng</a>
     </div> <!-- cd-user-modal-container -->
 </div> <!-- cd-user-modal -->
+<script th:if="${error}">
+    var signupFailed = true;
+</script>
+<script th:unless="${error}">
+    var signupFailed = false;
+</script>
 <script src="js.js"></script>
 </body>
 </html>
