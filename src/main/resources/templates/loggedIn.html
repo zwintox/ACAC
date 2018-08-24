@@ -17,9 +17,12 @@
         <Button class="profileBtn">Logga ut</Button>
     </div>
 
+
 <div class="flexcontainer1">
- 
-            <h1>Skadeanmälan</h1>
+    <form id="accidentForm" th:action="addNewAccident" method="post" th:object="${accident}">
+
+           <h1>Skadeanmälan</h1>
+
             <br>
             <input class="formInput"  type="text" th:field="*{Regnr}" placeholder="Registreringsnummer"><br>
             <p th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></p>
