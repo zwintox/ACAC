@@ -58,6 +58,19 @@
                         <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats">
                         <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
 
+                        <div id="map" style="width:400px;height:60px;background:yellow"></div>
+
+                        <script>
+                            function myMap() {
+                                var mapProp = {
+                                    center: new google.maps.LatLng(62.39081100, 17.30692700),
+                                    zoom: 10,
+                                }
+                                var map = new google.maps.Map(document.getElementById("map"), mapProp);
+                            }
+                        </script>
+
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxXp69SUCpUd1IvW69Of0bmhLQEpYwUjA&callback=myMap"></script>
 
 
                         <input class="form-input"  type="text" th:field="*{DriverPersonalID}" placeholder="Förarens personnummer">
