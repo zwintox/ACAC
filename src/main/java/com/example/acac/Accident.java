@@ -82,6 +82,10 @@ public class Accident {
 
     }
 
+    public Accident(int ID){
+        this.ID = ID;
+    }
+
     public int getID() {
         return ID;
     }

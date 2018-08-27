@@ -4,19 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+
 
 @Component
 public class AccidentRepository {
 
+    Accident accident;
+
     @Autowired
     public DataSource dataSource;
-    Connection conn = null;
 
-    public void addNewAccident(String Regnr,
+
+    public int addNewAccident(String Regnr,
                                String Försäkringsbolag,
                                String Omständighet,
                                Date Skadedag,
@@ -31,9 +31,11 @@ public class AccidentRepository {
                                String Utandningsprov,
                                String regnrmotpart,
                                int ID) {
+        Connection conn;
+
         try {
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(" EXEC CreateClaim @Regnr =?, @Försäkringsbolag =?, @Omständighet =?, @Skadedag =?, @Skadeplats =?, @DriverPersonalID =?, @DriverFirstName =?, @DriverLastName =?, @DriverPhoneNumber =?, @Händelseförlopp =?, @SkadorPåBilen =?, @PolisPåPlats =?, @Utandningsprov =?, @regnrmotpart =?, @memberID =?",  new String[]{"ID"});
+            PreparedStatement ps = conn.prepareStatement(" EXEC CreateClaim @Regnr =?, @Försäkringsbolag =?, @Omständighet =?, @Skadedag =?, @Skadeplats =?, @DriverPersonalID =?, @DriverFirstName =?, @DriverLastName =?, @DriverPhoneNumber =?, @Händelseförlopp =?, @SkadorPåBilen =?, @PolisPåPlats =?, @Utandningsprov =?, @regnrmotpart =?, @memberID =?");
 
             ps.setString(1, Regnr);
             ps.setString(2, Försäkringsbolag);
@@ -51,12 +53,20 @@ public class AccidentRepository {
             ps.setString(14, regnrmotpart);
             ps.setInt(15, ID);
 
-            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                System.out.println(rs.getInt("ID"));
+                return rs.getInt("ID");
+            }
             conn.close();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
     }
 }
 
