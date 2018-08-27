@@ -22,16 +22,13 @@ public class Accident {
     private String Omständighet;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotNull
     private LocalDate Skadedag;
     @NotEmpty
     private String Skadeplats;
     @Size(max = 12, min = 10)
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String DriverPersonalID;
-    @NotEmpty
     private String DriverFirstName;
-    @NotEmpty
     private String DriverLastName;
     @Size(max = 15, min = 7)
     @NumberFormat(style = NumberFormat.Style.NUMBER)
