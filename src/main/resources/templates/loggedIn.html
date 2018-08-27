@@ -28,7 +28,7 @@
                 <form id="accident-form" th:action="addNewAccident" method="post" th:object="${accident}"
                       enctype="multipart/form-data">
                     <div id="form-header">
-                        <h1>Skadeanmälan</h1>
+                        <h1> <strong>Skadeanmälan</strong></h1>
                     </div>
                     <div id="form-content">
                         <div id="form-left">
@@ -70,7 +70,7 @@
                             <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats">
                             <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
 
-                        <div id="map" style="width:400px;height:60px;background:yellow"></div>
+                        <div id="map" style="width:250px;height:60px;background:yellow"></div>
 
                         <script>
                             function myMap() {

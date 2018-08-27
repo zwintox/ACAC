@@ -61,6 +61,8 @@ h1{
     display: flex;
     justify-content: flex-end;
 }
+
+
 #user-wrapper{
     color:white;
     padding:25px 20px;
@@ -168,6 +170,11 @@ img{
     cursor: pointer;
 }
 
+.profileBtn:hover {
+    background-color: #246875;
+    color: white;
+}
+
 .flexContainer2 {
     display: flex;
     justify-content: flex-end;
@@ -187,6 +194,11 @@ img{
     margin: 4px 2px;
     cursor: pointer;
 
+}
+
+.formBtn:hover {
+    background-color: #246875;
+    color: white;
 }
 
 .formInput{
