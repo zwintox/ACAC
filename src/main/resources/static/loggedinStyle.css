@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 h1{
     display:flex;
     justify-content: center;
@@ -7,6 +10,106 @@ h1{
     color:#3599ae;
 
 }
+#logged-in-wrapper{
+}
+#logged-in-bar{
+    padding: 20px;
+}
+#logged-in-content{
+    display: flex;
+    height: 100%;
+}
+#form-wrapper{
+    justify-content: flex-end;
+    display: flex;
+}
+#form-wrapper >:first-child{
+    width: 595px;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
+#accident-form{
+    width: 100%;
+}
+#form-content{
+    display:flex;
+}
+
+#form-header{
+    padding:20px;
+}
+
+#form-left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#form-right{
+    width: 50%;
+    display:flex;
+    align-items: center;
+}
+#form-footer{
+    display: flex;
+    justify-content: flex-end;
+}
+#user-wrapper{
+    color:white;
+    padding:25px 20px;
+}
+#profile-picture{
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+#profile-title{
+    font-size:25px;
+
+    margin-bottom: 45px
+}
+#user-details{
+    display:flex;
+    align-items: center;
+}
+
+.form-input{
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    width: 232px;
+    height: 8px;
+    color: black;
+    margin: 0 0 10px 0;
+}
+.form-select{
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 0 0 0 5px;
+    width: 232px;
+    height: 31px;
+    color: black;
+    margin: 0 0 10px 0;
+}
+.flex-2-col{
+    display: flex;
+}
+.w30{
+    width: 30%;
+}
+.w50{
+    width: 50%;
+}
+.w70{
+    width: 70%;
+
+}
+
+#logged-in-logo{
+    padding:10px;
+}
+
 
 .flexContainer1{
     display:flex;
@@ -44,23 +147,20 @@ img{
     font-size: 15px;
 
 }
+
 .profileBtn{
-    color:white;
-    width: 100px;
+    color: white;
+    width: 181px;
     background-color: #73B0BC;
     font-family: Arial;
     border: none;
-    padding: 15px 32px;
+    padding: 15px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-input {
-    width: 50%;
 }
 
 .flexContainer2 {
@@ -100,3 +200,17 @@ input {
     justify-content: flex-end;
 }
 
+@media screen and (max-width: 950px) {
+
+    #logged-in-content {
+        display:block;
+    }
+    #form-wrapper {
+        justify-content: center;
+        width: 100%;
+    }
+    #user-wrapper {
+        width: 100%;
+    }
+
+}
