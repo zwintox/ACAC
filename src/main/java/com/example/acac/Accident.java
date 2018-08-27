@@ -22,6 +22,7 @@ public class Accident {
     private String Omständighet;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull
     private LocalDate Skadedag;
     @NotEmpty
     private String Skadeplats;
