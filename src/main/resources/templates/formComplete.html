@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="formCompleteStyle.css">
+    <title>Acac Skadeformulär</title>
+</head>
+<body>
+
+<div id="logged-in-wrapper">
+    <div id="logged-in-bar">
+        <a href="#0"><img src="logolightblue.png" alt="Logo"></a>
+    </div>
+
+    <div id="logged-in-content">
+
+        <!--Formulär-->
+        <div class="w70" id="form-wrapper">
+            <div>
+                <form id="accident-form" th:action="addNewAccident" method="post" th:object="${accident}" enctype="multipart/form-data">
+                    <div id="form-header">
+                        <h1>Tack för din anmälan!</h1>
+                    </div>
+                    <div  id="form-content">
+                        <div id="form-text">
+
+                            Din anmälan är registrerad och skickas snart till ditt försäkringsbolag.
+
+                        </div>
+                    </div>
+                    </div>
+                    <div id="form-footer">
+                        <button class="formBtn">Skicka</button>
+                    </div>
+
+            </form>
+            </div>
+        </div>
+
+
+        <!--Användare-->
+        <div class="w30" id="user-wrapper">
+            <div id="profile-title">Din profil</div>
+            <div class="flex-2-col">
+                <div id="user-details" class="w50">
+                    <div>
+                        <div>Matilda Stekpannas</div>
+                        <div>KorstaHuset 2B 85636</div>
+                        <div>stekeln2000@hotmail.com</div>
+                    </div>
+                </div>
+                <div class="w50">
+                    <div id="profile-picture"></div>
+                </div>
+            </div>
+            <div>
+                <div><span>Senaste anmälningsdag:</span>  <span>asd</span> </div>
+                <div>  <span>Anmälda händelser:</span>  <span>2</span> </div>
+            </div>
+            <div>
+                <div>
+
+                    <Button class="profileBtn">Ändra min information</Button>
+                </div>
+                <div>
+                    <Button class="profileBtn">Logga ut</Button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
