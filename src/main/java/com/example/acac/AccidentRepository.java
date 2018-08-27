@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Component
 public class AccidentRepository {
@@ -19,7 +20,7 @@ public class AccidentRepository {
     public void addNewAccident(String Regnr,
                                String Försäkringsbolag,
                                String Omständighet,
-                               Date Skadedag,
+                               LocalDate Skadedag,
                                String Skadeplats,
                                String DriverPersonalID,
                                String DriverFirstName,
@@ -38,7 +39,7 @@ public class AccidentRepository {
             ps.setString(1, Regnr);
             ps.setString(2, Försäkringsbolag);
             ps.setString(3, Omständighet);
-            ps.setDate(4, Skadedag);
+            ps.setDate(4, Date.valueOf(Skadedag));
             ps.setString(5, Skadeplats);
             ps.setString(6, DriverPersonalID);
             ps.setString(7, DriverFirstName);

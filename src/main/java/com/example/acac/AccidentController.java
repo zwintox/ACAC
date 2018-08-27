@@ -39,7 +39,7 @@ public class AccidentController {
         if (session != null) {
             return "loggedIn";
         }
-        return "index";
+        return "redirect:login";
     }
 
     @PostMapping("/addNewAccident")
@@ -51,7 +51,7 @@ public class AccidentController {
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
             if(bindingResult.hasErrors()){
-                return "loggedIn";
+                return "redirect:addNewAccident";
             }
 
 

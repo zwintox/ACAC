@@ -40,7 +40,7 @@ public class MemberController {
                     member.getLastName(),
                     member.getCity(),
                     member.getAddress(),
-                    member.getZipCode(),
+                    Integer.parseInt(member.getZipCode()),
                     member.geteMail(),
                     member.getPhoneNumber(),
                     member.getPassword());
@@ -54,7 +54,7 @@ public class MemberController {
                              @RequestParam String lastName,
                              @RequestParam String city,
                              @RequestParam String address,
-                             @RequestParam int zipCode,
+                             @RequestParam String zipCode,
                              @RequestParam String eMail,
                              @RequestParam String phoneNumber,
                              @RequestParam String password) {
