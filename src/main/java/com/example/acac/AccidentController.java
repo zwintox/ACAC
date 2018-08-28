@@ -72,7 +72,7 @@ public class AccidentController {
 
             String source;
 
-            System.out.println(accident.getID()+"1");
+
 
             if (files.length > 0) {
 
@@ -85,13 +85,13 @@ public class AccidentController {
                         // Creating the directory to store file
                         String workingDir = System.getProperty("user.dir");
 
-                        File dir = new File(workingDir + File.separator + "src" + File.separator + "main" + File.separator + "images" + File.separator + "tmpFiles" + File.separator + session.getId());
+                        File dir = new File(workingDir + File.separator + "src" + File.separator + "main" + File.separator + "images" + File.separator + "tmpFiles" + File.separator + session.getId()+ File.separator + accidentID);
                         if (!dir.exists())
                             dir.mkdirs();
 
                         // Create the file on server
                         File serverFile = new File(dir.getAbsolutePath()
-                                + File.separator + file.getOriginalFilename());
+                                + File.separator + i +file.getOriginalFilename());
                         BufferedOutputStream stream = new BufferedOutputStream(
                                 new FileOutputStream(serverFile));
                         stream.write(bytes);
@@ -103,11 +103,11 @@ public class AccidentController {
                         return "You failed to upload " + name + " => " + e.getMessage();
                     }
 
-                    System.out.println(accident.getID()+"2");
+
                     photoRepository.addPhoto(source, accidentID, member.getID(), name);
                 }
             }
-            System.out.println(accidentID+"3");
+
 
 
                 return "formComplete";
