@@ -110,7 +110,7 @@ public class AccidentController {
             System.out.println(accidentID+"3");
 
 
-                return "formComplete";
+                return "redirect:formComplete";
 
             } else {
             return "index";
@@ -120,4 +120,6 @@ public class AccidentController {
     public String NewForm (Member member){
         return "loggedIn";
     }
+
+
 }

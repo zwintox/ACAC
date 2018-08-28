@@ -93,4 +93,19 @@ public class LoginController {
         return "profileInfo";
     }
 
+    @GetMapping ("/formComplete")
+    public String formComplete (Model model, HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        Member member = (Member) session.getAttribute("member");
+        model.addAttribute("formCompleteFirstName",member.getFirstName());
+        model.addAttribute("formCompleteLastName",member.getLastName());
+        model.addAttribute("formCompleteeMail",member.geteMail());
+        model.addAttribute("formCompleteAddress",member.getAddress());
+        model.addAttribute("formCompleteZipCode",member.getZipCode());
+        model.addAttribute("formCompletePassword",member.getPassword());
+        model.addAttribute("formCompletePhoneNumber",member.getPhoneNumber());
+        model.addAttribute("formCompleteCity",member.getCity());
+        return "formComplete";
+    }
+
 }
