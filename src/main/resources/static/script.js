@@ -411,7 +411,7 @@ function createTweenScrubber(tween, seekSpeed) {
       seek(dx);
     }
   });
-  // mobile
+ /* // mobile
   window.addEventListener('touchstart', function(e) {
     _cx = e.touches[0].clientX;
     stop();
@@ -428,5 +428,5 @@ function createTweenScrubber(tween, seekSpeed) {
 
     seek(dx);
     e.preventDefault();
-  });
+  });*/
 }
