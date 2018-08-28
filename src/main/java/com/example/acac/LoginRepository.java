@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 @Component
 public class LoginRepository {
 
@@ -19,7 +20,7 @@ public class LoginRepository {
 
 
     public Member getMember(String eMail, String password) {
-        Connection conn = null;
+        Connection conn;
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("Exec Login @eMail=?, @password=?");

@@ -8,6 +8,13 @@
 </head>
 <body bgcolor="#0080ff">
 
+<script>
+    function NewForm() {
+        window.location.href = "http://localhost:8080/loggedIn"
+    }
+
+</script>
+
 <div id="logged-in-wrapper">
     <div id="logged-in-bar">
         <a href="#0"><img src="logolightblue.png" alt="Logo"></a>
@@ -29,7 +36,7 @@
 
                     </div>
                     <div id="form-footer">
-                        <button class="newBtn">Skapa nytt formulär</button>
+                        <button class="newBtn" onclick="NewForm()">Skapa nytt formulär</button>
                     </div>
                 </form>
             </div>

@@ -29,11 +29,11 @@ import java.util.List;
 public class AccidentController {
     @Autowired
     private AccidentRepository accidentRepository;
-    private PhotoController photoRepository;
+    @Autowired
+    private PhotoRepository photoRepository;
 
 
     @GetMapping("/addNewAccident")
-
     public String getNewAccident(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -43,50 +43,17 @@ public class AccidentController {
     }
 
     @PostMapping("/addNewAccident")
-
-
-    public String addNewAccident(@Valid Accident accident, @RequestParam("name") String[] names,
-                                 @RequestParam("file") MultipartFile[] files, BindingResult bindingResult, HttpServletRequest request) {
+    public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam("name") String[] names,
+                                 @RequestParam("file") MultipartFile[] files, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
             if(bindingResult.hasErrors()){
-                return "redirect:addNewAccident";
+                return "loggedIn";
             }
 
 
-
-            for (int i = 0; i < files.length; i++) {
-                MultipartFile file = files[i];
-                String name = names[i];
-                try {
-                    byte[] bytes = file.getBytes();
-
-                    // Creating the directory to store file
-                    String workingDir = System.getProperty("user.dir");
-
-                    System.out.format("Working Dir: %s", workingDir);
-
-                    File dir = new File(workingDir + File.separator + "src" + File.separator + "main" + File.separator + "images" + File.separator + "tmpFiles" + File.separator + session.getId());
-                    if (!dir.exists())
-                        dir.mkdirs();
-
-                    // Create the file on server
-                    File serverFile = new File(dir.getAbsolutePath()
-                            + File.separator + file.getOriginalFilename());
-                    BufferedOutputStream stream = new BufferedOutputStream(
-                            new FileOutputStream(serverFile));
-                    stream.write(bytes);
-                    stream.close();
-
-
-
-
-                } catch (Exception e) {
-                    return "You failed to upload " + name + " => " + e.getMessage();
-                }
-            }
-                accidentRepository.addNewAccident(
+                int accidentID = accidentRepository.addNewAccident(
                         accident.getRegnr(),
                         accident.getFörsäkringsbolag(),
                         accident.getOmständighet(),
@@ -103,14 +70,54 @@ public class AccidentController {
                         accident.getRegnrmotpart(),
                         member.getID());
 
+            String source;
 
-             //   photoRepository
+            System.out.println(accident.getID()+"1");
+
+            if (files.length > 0) {
+
+                for (int i = 0; i < files.length; i++) {
+                    MultipartFile file = files[i];
+                    String name = names[i];
+                    try {
+                        byte[] bytes = file.getBytes();
+
+                        // Creating the directory to store file
+                        String workingDir = System.getProperty("user.dir");
+
+                        File dir = new File(workingDir + File.separator + "src" + File.separator + "main" + File.separator + "images" + File.separator + "tmpFiles" + File.separator + session.getId());
+                        if (!dir.exists())
+                            dir.mkdirs();
+
+                        // Create the file on server
+                        File serverFile = new File(dir.getAbsolutePath()
+                                + File.separator + file.getOriginalFilename());
+                        BufferedOutputStream stream = new BufferedOutputStream(
+                                new FileOutputStream(serverFile));
+                        stream.write(bytes);
+                        stream.close();
+
+                     source = dir.getAbsolutePath();
+
+                    } catch (Exception e) {
+                        return "You failed to upload " + name + " => " + e.getMessage();
+                    }
+
+                    System.out.println(accident.getID()+"2");
+                    photoRepository.addPhoto(source, accidentID, member.getID(), name);
+                }
+            }
+            System.out.println(accidentID+"3");
 
 
-                return "loggedIn";
+                return "formComplete";
 
             } else {
             return "index";
         }
+    }
+    @GetMapping ("/NewForm")
+    public String NewForm (Member member){
+        return "loggedIn";
     }
 }

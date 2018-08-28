@@ -37,7 +37,7 @@
                     <div id="form-content">
                         <div id="form-left">
 
-                            <input class="form-input" type="text" th:field="*{Regnr}" placeholder="Registreringsnummer">
+                            <input class="form-input" type="text" th:field="*{Regnr}" placeholder="Registreringsnummer" required="required">
                             <span th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></span>
 
                             <label for="forsakringsbolaginput">Försäkringsbolag:</label>
@@ -62,16 +62,17 @@
                                 <option th:value="'A'">Avkörning på väg</option>
                                 <option th:value="'S'">Sidokrock</option>
                                 <option th:value="'M'">Mindre skador</option>
+
                             </select>
                             Datum för olyckan:
                             <input class="form-input" type="date" th:field="*{Skadedag}" id="start" name="trip"
                                    value="2018-07-22"
 
-                                   min="2018-01-01" max="2020-12-31"/>
+                                   min="2018-01-01" max="2018-12-31" required="required"/>
                             <span th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></span>
 
 
-                            <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats">
+                            <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats" required="required">
                             <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
 
                         <div id="map" style="width:250px;height:60px;background:yellow"></div>
@@ -91,7 +92,7 @@
 
 
                             <input class="form-input" type="text" th:field="*{DriverPersonalID}"
-                                   placeholder="Förarens personnummer">
+                                   placeholder="Förarens personnummer" required="required">
                             <span th:if="${#fields.hasErrors('DriverPersonalID')}"
                                   th:errors="*{DriverPersonalID}"></span>
 
@@ -105,13 +106,13 @@
 
 
                             <input class="form-input" type="text" th:field="*{DriverPhoneNumber}"
-                                   placeholder="Förarens telefonnummer">
+                                   placeholder="Förarens telefonnummer" required="required">
                             <span th:if="${#fields.hasErrors('DriverPhoneNumber')}"
                                   th:errors="*{DriverPhoneNumber}"></span>
 
                             <label for="handelseforlopp">Beskriv händelseförloppet:</label>
                             <textarea id="handelseforlopp" class="form-input" name="message"
-                                      th:field="*{Händelseförlopp}" rows="10" cols="30">
+                                      th:field="*{Händelseförlopp}" rows="10" cols="30" required="required">
                         </textarea>
 
                             <span th:if="${#fields.hasErrors('Händelseförlopp')}" th:errors="*{Händelseförlopp}"></span>

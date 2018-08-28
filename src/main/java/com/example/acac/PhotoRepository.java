@@ -16,18 +16,19 @@ public class PhotoRepository {
     Connection conn = null;
 
 
-    public void addPhoto(int ID, String source, int accidentID) {
+    public void addPhoto(String source, int accidentID, int memberID, String Description) {
 
-/*
-                           {
+
+
         try {
 
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("EXEC CreateUser @personalNumber = ?,@firstName = ?, @lastName = ?", new String[]{"id"});
+            PreparedStatement ps = conn.prepareStatement("EXEC AddPhoto @Source = ?,@accidentID = ?, @memberID = ?, @Description=? ", new String[]{"id"});
 
-            ps.setString(1, personalNumber);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
+            ps.setString(1, source);
+            ps.setInt(2, accidentID);
+            ps.setInt(3, memberID);
+                ps.setString(4, Description);
 
             ps.executeQuery();
             conn.close();
@@ -36,6 +37,6 @@ public class PhotoRepository {
             e.printStackTrace();
         }
 
-*/
+
     }
 }
