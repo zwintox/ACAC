@@ -217,17 +217,28 @@ img{
     justify-content: flex-end;
 }
 
+
+
 @media screen and (max-width: 950px) {
 
     #logged-in-content {
-        display:block;
+        display: block;
     }
+
     #form-wrapper {
         justify-content: center;
         width: 100%;
     }
+
     #user-wrapper {
         width: 100%;
     }
 
 }
+
+    @media screen and (max-width: 700px) {
+        #form-content {
+            display: block;
+
+        }
+    }
