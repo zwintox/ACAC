@@ -34,7 +34,6 @@ public class AccidentController {
 
 
     @GetMapping("/addNewAccident")
-
     public String getNewAccident(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -116,5 +115,9 @@ public class AccidentController {
             } else {
             return "index";
         }
+    }
+    @GetMapping ("/NewForm")
+    public String NewForm (Member member){
+        return "loggedIn";
     }
 }
