@@ -110,7 +110,7 @@ public class AccidentController {
 
 
 
-                return "formComplete";
+                return "redirect:formComplete";
 
             } else {
             return "index";
@@ -120,4 +120,6 @@ public class AccidentController {
     public String NewForm (Member member){
         return "loggedIn";
     }
+
+
 }

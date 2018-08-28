@@ -166,7 +166,7 @@
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
                     <div>
-                        <p th:text="${FirstName}+${LastName}"></p>
+                        <p th:text="${FirstName}+' ' +${LastName}"></p>
                         <p th:text="${Address}+'  '+ ${ZipCode}"></p>
                         <p th:text="${eMail}"></p>
                     </div>
@@ -175,10 +175,7 @@
                     <div id="profile-picture"></div>
                 </div>
             </div>
-            <div>
-                <div><span>Senaste anmälningsdag:</span> <span>asd</span></div>
-                <div><span>Anmälda händelser:</span> <span>2</span></div>
-            </div>
+          
             <div>
                 <div>
 
