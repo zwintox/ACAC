@@ -49,9 +49,9 @@
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
                     <div>
-                        <div>Matilda Stekpannas</div>
-                        <div>KorstaHuset 2B 85636</div>
-                        <div>stekeln2000@hotmail.com</div>
+                        <p th:text="${changeFirstName}+ ' ' + ${changeLastName}"></p>
+                        <p th:text="${changeAddress}+'  '+ ${changeZipCode}"></p>
+                        <p th:text="${changeeMail}"></p>
                     </div>
                 </div>
                 <div class="w50">

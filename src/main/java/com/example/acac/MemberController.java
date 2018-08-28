@@ -64,6 +64,8 @@ public class MemberController {
         HttpSession session = request.getSession(false);
         Member member = (Member) session.getAttribute("member");
         mr.editMember(member.getID(), password, firstName, lastName, city, address, Integer.parseInt(zipCode), eMail, phoneNumber);
+        session.setAttribute("member", new Member(member.getID(), null, firstName, lastName, city, address, zipCode, eMail, phoneNumber, password));
+
         return "redirect:loggedIn";
     }
 
