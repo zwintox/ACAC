@@ -309,7 +309,6 @@ header[role=banner]::after {
     margin-top: 20px;
 }
 
-@media only screen and (min-width: 768px) {
     .main-nav {
         width: 100%;
         height: auto;
@@ -366,7 +365,6 @@ header[role=banner]::after {
         border: none;
         justify-content: center;
     }
-}
 
 /* --------------------------------
 
@@ -707,7 +705,7 @@ xsigin/signup popup
     overflow: hidden;
     justify-content: center;
 }
-@media only screen and (min-width: 1170px) {
+@media only screen and (min-width: 768px) {
     .cd-close-form {
         display: none;
     }

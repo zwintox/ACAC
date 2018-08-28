@@ -40,14 +40,12 @@ public class AccidentController {
         if (session != null) {
             return "loggedIn";
         }
-        return "index";
+        return "redirect:login";
     }
 
     @PostMapping("/addNewAccident")
-
-
-    public String addNewAccident(@Valid Accident accident, @RequestParam("name") String[] names,
-                                 @RequestParam("file") MultipartFile[] files, BindingResult bindingResult, HttpServletRequest request) {
+    public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam("name") String[] names,
+                                 @RequestParam("file") MultipartFile[] files, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
@@ -113,7 +111,7 @@ public class AccidentController {
             System.out.println(accidentID+"3");
 
 
-                return "loggedIn";
+                return "formComplete";
 
             } else {
             return "index";

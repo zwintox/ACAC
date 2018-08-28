@@ -2,10 +2,7 @@ package com.example.acac;
 
 import org.springframework.format.annotation.NumberFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class Member {
     private int ID;
@@ -13,6 +10,7 @@ public class Member {
     @NumberFormat
     private String personalNumber;
     @NotEmpty
+    @NotNull
     private String firstName;
     @NotEmpty
     private String lastName;
@@ -20,9 +18,8 @@ public class Member {
     private String city;
     @NotEmpty
     private String address;
-    @Max (99999)
-    @NumberFormat
-    private int zipCode;
+    @Digits(integer = 5, fraction = 0)
+    private String zipCode;
     @Email
     private String eMail;
     @Size(max = 15, min = 7)
@@ -40,7 +37,7 @@ public class Member {
                   String lastName,
                   String city,
                   String address,
-                  int zipCode,
+                  String zipCode,
                   String eMail,
                   String phoneNumber,
                   String password) {
@@ -115,11 +112,11 @@ public class Member {
         this.address = address;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

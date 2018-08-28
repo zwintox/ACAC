@@ -6,159 +6,183 @@
     <link rel="stylesheet" type="text/css" href="loggedinStyle.css">
     <title>Acac Skadeformulär</title>
 </head>
-<body bgcolor="#2f889a">
+<body bgcolor="#0080ff">
+
+<script>
+    function logout() {
+        window.location.href = "http://localhost:8080/LogOut"
+    }
+
+</script>
 
 <div id="logged-in-wrapper">
-<div id="logged-in-bar">
-    <a href="#0"><img src="logolightblue.png" alt="Logo"></a>
-</div>
+    <div id="logged-in-bar">
+        <a href="#0"><img src="logolightblue.png" alt="Logo"></a>
+    </div>
 
-<div id="logged-in-content">
+    <div id="logged-in-content">
 
-    <!--Formulär-->
-    <div class="w70" id="form-wrapper">
-        <div>
-            <form id="accident-form" th:action="addNewAccident" method="post" th:object="${accident}" enctype="multipart/form-data">
-                <div id="form-header">
-                    <h1>Skadeanmälan</h1>
-                </div>
-                <div  id="form-content">
-                    <div id="form-left">
+        <!--Formulär-->
+        <div class="w70" id="form-wrapper">
+            <div>
+                <form id="accident-form" th:action="addNewAccident" method="post" th:object="${accident}"
+                      enctype="multipart/form-data">
+                    <div id="form-header">
+                        <h1> <strong>Skadeanmälan</strong></h1>
+                    </div>
+                    <div id="form-content">
+                        <div id="form-left">
 
-                        <input class="form-input"  type="text" th:field="*{Regnr}" placeholder="Registreringsnummer">
-                        <span th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></span>
+                            <input class="form-input" type="text" th:field="*{Regnr}" placeholder="Registreringsnummer" required="required">
+                            <span th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></span>
 
-                        <label for="forsakringsbolaginput">Försäkringsbolag:</label>
-                        <select class="form-select"  id="forsakringsbolaginput" th:field="*{Försäkringsbolag}" name="bolag">
-                            <option th:value="'A'" >Aktsam</option>
-                            <option th:value="'F'" >Folksam</option>
-                            <option th:value="'I'" >If</option>
-                            <option th:value="'L'" >Länsförsäkringar</option>
-                            <option th:value="'T'" >Trygghansa</option>
-                            <span th:if="${#fields.hasErrors('Försäkringsbolag')}" th:errors="*{Försäkringsbolag}"></span>
-                        </select>
-
-
-                        <label for="omstandighet">Omständighet:</label>
-                        <select class="form-select"  id="omstandighet" th:field="*{Omständighet}">
-                            <option th:value="'F'" >Frontalkrock</option>
-                            <option th:value="'B'" >Backningsolycka</option>
-                            <option th:value="'A'" >Avkörning på väg</option>
-                            <option th:value="'S'" >Sidokrock</option>
-                            <option th:value="'M'" >Mindre skador</option>
-
-                        </select>
-                        Datum för olyckan:
-                        <input class="form-input"  type="date" th:field="*{Skadedag}" id="start" name="trip"
-                               value="2018-07-22"
-
-                               min="2018-01-01" max="2018-12-31" />
-                        <span th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></span>
-
-                        <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats">
-                        <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
+                            <label for="forsakringsbolaginput">Försäkringsbolag:</label>
+                            <select class="form-select" id="forsakringsbolaginput" th:field="*{Försäkringsbolag}"
+                                    name="bolag">
+                                <option th:value="''"></option>
+                                <option th:value="'A'">Aktsam</option>
+                                <option th:value="'F'">Folksam</option>
+                                <option th:value="'I'">If</option>
+                                <option th:value="'L'">Länsförsäkringar</option>
+                                <option th:value="'T'">Trygghansa</option>
+                                <span th:if="${#fields.hasErrors('Försäkringsbolag')}"
+                                      th:errors="*{Försäkringsbolag}"></span>
+                            </select>
 
 
+                            <label for="omstandighet">Omständighet:</label>
+                            <select class="form-select" id="omstandighet" th:field="*{Omständighet}">
+                                <option th:value="''"></option>
+                                <option th:value="'F'">Frontalkrock</option>
+                                <option th:value="'B'">Backningsolycka</option>
+                                <option th:value="'A'">Avkörning på väg</option>
+                                <option th:value="'S'">Sidokrock</option>
+                                <option th:value="'M'">Mindre skador</option>
 
-                        <input class="form-input"  type="text" th:field="*{DriverPersonalID}" placeholder="Förarens personnummer">
-                        <span th:if="${#fields.hasErrors('DriverPersonalID')}" th:errors="*{DriverPersonalID}"></span>
+                            </select>
+                            Datum för olyckan:
+                            <input class="form-input" type="date" th:field="*{Skadedag}" id="start" name="trip"
+                                   value="2018-07-22"
+
+                                   min="2018-01-01" max="2018-12-31" required="required"/>
+                            <span th:if="${#fields.hasErrors('Skadedag')}" th:errors="*{Skadedag}"></span>
 
 
-                        <input class="form-input" type="text" th:field="*{DriverFirstName}" placeholder="Förarens förnamn">
+                            <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats" required="required">
+                            <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
+
+                        <div id="map" style="width:250px;height:60px;background:yellow"></div>
+
+                        <script>
+                            function myMap() {
+                                var mapProp = {
+                                    center: new google.maps.LatLng(62.39081100, 17.30692700),
+                                    zoom: 10,
+                                }
+                                var map = new google.maps.Map(document.getElementById("map"), mapProp);
+                            }
+                        </script>
+
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxXp69SUCpUd1IvW69Of0bmhLQEpYwUjA&callback=myMap"></script>
 
 
-                        <input class="form-input" type="text" th:field="*{DriverLastName}" placeholder="Förarens efternamn">
+
+                            <input class="form-input" type="text" th:field="*{DriverPersonalID}"
+                                   placeholder="Förarens personnummer" required="required">
+                            <span th:if="${#fields.hasErrors('DriverPersonalID')}"
+                                  th:errors="*{DriverPersonalID}"></span>
 
 
-                        <input class="form-input" type="text" th:field="*{DriverPhoneNumber}" placeholder="Förarens telefonnummer">
-                        <span th:if="${#fields.hasErrors('DriverPhoneNumber')}" th:errors="*{DriverPhoneNumber}"></span>
+                            <input class="form-input" type="text" th:field="*{DriverFirstName}"
+                                   placeholder="Förarens förnamn">
 
-                        <label for="handelseforlopp">Beskriv händelseförloppet:</label>
-                        <textarea id="handelseforlopp" class="form-input" name="message" th:field="*{Händelseförlopp}" rows="10" cols="30">
+
+                            <input class="form-input" type="text" th:field="*{DriverLastName}"
+                                   placeholder="Förarens efternamn">
+
+
+                            <input class="form-input" type="text" th:field="*{DriverPhoneNumber}"
+                                   placeholder="Förarens telefonnummer" required="required">
+                            <span th:if="${#fields.hasErrors('DriverPhoneNumber')}"
+                                  th:errors="*{DriverPhoneNumber}"></span>
+
+                            <label for="handelseforlopp">Beskriv händelseförloppet:</label>
+                            <textarea id="handelseforlopp" class="form-input" name="message"
+                                      th:field="*{Händelseförlopp}" rows="10" cols="30" required="required">
                         </textarea>
 
-                        <span th:if="${#fields.hasErrors('Händelseförlopp')}" th:errors="*{Händelseförlopp}"></span>
+                            <span th:if="${#fields.hasErrors('Händelseförlopp')}" th:errors="*{Händelseförlopp}"></span>
 
-                        <label for="skadorinput">Skador på er bil:</label>
-                        <input class="form-input" id="skadorinput" type="text" th:field="*{SkadorPåBilen}">
+                            <label for="skadorinput">Skador på er bil:</label>
+                            <input class="form-input" id="skadorinput" type="text" th:field="*{SkadorPåBilen}">
 
-                        <div>
-                            <p>Var polisen på plats?</p>
-                            <input type="checkbox" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
-                        </div>
-                        <div th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></div>
-
-
-                        <label for="utandningsprov">Utandningsprov:</label>
-                        <select class="form-select" id="utandningsprov"   th:field="*{Utandningsprov}" placeholder="Utandningsprov">
-                            <option th:value="''" ></option>
-                            <option th:value="'P'" >Positivt</option>
-                            <option th:value="'N'" >Negativt</option></select>
-
-                        <input class="form-input" type="text" th:field="*{regnrmotpart}" placeholder="Registreringsnummer motpart">
-                        <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
+                            <div>
+                                <p>Var polisen på plats?</p>
+                                <input type="checkbox" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
+                            </div>
+                            <div th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></div>
 
 
-                    </div>
+                            <label for="utandningsprov">Utandningsprov:</label>
+                            <select class="form-select" id="utandningsprov" th:field="*{Utandningsprov}"
+                                    placeholder="Utandningsprov">
+                                <option th:value="''"></option>
+                                <option th:value="'P'">Positivt</option>
+                                <option th:value="'N'">Negativt</option>
+                            </select>
 
-                    <div id="form-right">
-                        <div>
-                            File1 to upload: <input type="file" name="file">
-                            Name1: <input type="text" name="name"><br />
-                            File2 to upload: <input type="file" name="file">
-                            Name2: <input type="text" name="name"><br />
+                            <input class="form-input" type="text" th:field="*{regnrmotpart}"
+                                   placeholder="Registreringsnummer motpart">
+                            <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
                         </div>
 
-
+                        <div id="form-right">
+                            <div>
+                                File1 to upload: <input type="file" name="file">
+                                Name1: <input type="text" name="name"><br/>
+                                File2 to upload: <input type="file" name="file">
+                                Name2: <input type="text" name="name"><br/>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div id="form-footer">
-                    <button class="formBtn">Skicka</button>
-                </div>
-
-
-
-
-
-
-
-
-            </form>
+                    <div id="form-footer">
+                        <button class="formBtn">Skicka</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
 
-    <!--Användare-->
-    <div class="w30" id="user-wrapper">
-        <div id="profile-title">Din profil</div>
-        <div class="flex-2-col">
-            <div id="user-details" class="w50">
+        <!--Användare-->
+        <div class="w30" id="user-wrapper">
+            <div id="profile-title">Din profil</div>
+            <div class="flex-2-col">
+                <div id="user-details" class="w50">
+                    <div>
+                        <div>Matilda Stekpannas</div>
+                        <div>KorstaHuset 2B 85636</div>
+                        <div>stekeln2000@hotmail.com</div>
+                    </div>
+                </div>
+                <div class="w50">
+                    <div id="profile-picture"></div>
+                </div>
+            </div>
+            <div>
+                <div><span>Senaste anmälningsdag:</span> <span>asd</span></div>
+                <div><span>Anmälda händelser:</span> <span>2</span></div>
+            </div>
+            <div>
                 <div>
-                    <div>Matilda Stekpannas</div>
-                    <div>KorstaHuset 2B 85636</div>
-                    <div>stekeln2000@hotmail.com</div>
+
+                    <Button class="profileBtn">Ändra min information</Button>
+                </div>
+                <div>
+                    <Button class="profileBtn" onclick="logout()">Logga ut</Button>
                 </div>
             </div>
-            <div class="w50">
-                <div id="profile-picture"></div>
-            </div>
         </div>
-        <div>
-            <div><span>Senaste anmälningsdag:</span>  <span>asd</span> </div>
-                <div>  <span>Anmälda händelser:</span>  <span>2</span> </div>
-        </div>
-        <div>
-            <div>
-
-                <Button class="profileBtn">Ändra min information</Button>
-            </div>
-            <div>
-                <Button class="profileBtn">Logga ut</Button>
-            </div>
-        </div>
-
     </div>
-
 </div>
 </body>
 </html>
