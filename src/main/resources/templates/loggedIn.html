@@ -14,6 +14,11 @@
     }
 
 
+    function change() {
+        window.location.href = "http://localhost:8080/profileInfo"
+    }
+
+
 </script>
 
 <div id="logged-in-wrapper">
@@ -139,10 +144,10 @@
 
                         <div id="form-right">
                             <div>
-                                File1 to upload: <input type="file" name="file">
-                                Name1: <input type="text" name="name"><br/>
-                                File2 to upload: <input type="file" name="file">
-                                Name2: <input type="text" name="name"><br/>
+                                Ladda bild 1: <input type="file" name="file">
+                                Beskriving bild 1: <input type="text" name="name"><br/>
+                                Ladda bild 2: <input type="file" name="file">
+                                Beskrivning bild 2: <input type="text" name="name"><br/>
                             </div>
                         </div>
                     </div>
@@ -176,7 +181,7 @@
             <div>
                 <div>
 
-                    <Button class="profileBtn">Ändra min information</Button>
+                    <Button class="profileBtn" onclick="change()">Ändra min information</Button>
                 </div>
                 <div>
                     <Button class="profileBtn" onclick="logout()">Logga ut</Button>

@@ -65,5 +65,9 @@ public class LoginController {
         return "redirect:login";
     }
 
+    @GetMapping ("/change")
+    public String change (Member member){
+        return "profileInfo";
+    }
 
 }
