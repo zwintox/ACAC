@@ -47,26 +47,29 @@ public class MemberRepository {
             e.printStackTrace();
         }
     }
-    public void editMember (String firstName,
+    public void editMember (int ID,
+                            String password,
+                            String firstName,
                             String lastName,
                             String city,
                             String address,
                             int zipCode,
                             String eMail,
-                            String phoneNumber,
-                            String password) {
+                            String phoneNumber) {
         try {
             conn = dataSource.getConnection();
-        PreparedStatement ps = conn.prepareStatement("EXEC editMember @firstName = ?, @lastName = ?, @city = ?, @address = ?, @zipCode = ?,@eMail = ?, @phoneNumber = ?, @password = ?");
-            ps.setString(1, firstName);
-            ps.setString(2, lastName);
-            ps.setString(3, city);
-            ps.setString(4, address);
-            ps.setInt(5, (zipCode));
-            ps.setString(6, eMail);
-            ps.setString(7, phoneNumber);
-            ps.setString(8, password);
-            ps.executeQuery();
+        PreparedStatement ps = conn.prepareStatement("EXEC ChangeUser @ID = ? , @password = ?, @firstName = ?, @lastName = ?, @city = ?, @address = ?, @zipCode = ?,@eMail = ?, @phoneNumber = ?");
+            ps.setInt(1, ID);
+            ps.setString(2, password);
+            ps.setString(3, firstName);
+            ps.setString(4, lastName);
+            ps.setString(5, city);
+            ps.setString(6, address);
+            ps.setInt(7, (zipCode));
+            ps.setString(8, eMail);
+            ps.setString(9, phoneNumber);
+
+            ps.executeUpdate();
             conn.close();
 
         } catch (SQLException e) {

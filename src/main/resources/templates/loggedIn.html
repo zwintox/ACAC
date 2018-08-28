@@ -15,7 +15,7 @@
 
 
     function change() {
-        window.location.href = "http://localhost:8080/profileInfo"
+        window.location.href = "http://localhost:8080/change"
     }
 
 
@@ -165,9 +165,9 @@
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
                     <div>
-                        <div>Matilda Stekpannas</div>
-                        <div>KorstaHuset 2B 85636</div>
-                        <div>stekeln2000@hotmail.com</div>
+                        <p th:text="${FirstName}+${LastName}"></p>
+                        <p th:text="${Address}+'  '+ ${ZipCode}"></p>
+                        <p th:text="${eMail}"></p>
                     </div>
                 </div>
                 <div class="w50">

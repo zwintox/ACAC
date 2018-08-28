@@ -32,7 +32,8 @@ public class Member {
     }
 
 
-    public Member(String personalNumber,
+    public Member(int ID,
+                  String personalNumber,
                   String firstName,
                   String lastName,
                   String city,
@@ -42,6 +43,7 @@ public class Member {
                   String phoneNumber,
                   String password) {
 
+        this.ID = ID;
         this.personalNumber = personalNumber;
         this.firstName = firstName;
         this.lastName = lastName;

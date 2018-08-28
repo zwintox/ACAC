@@ -25,31 +25,39 @@
         <!--Formulär-->
         <div class="w70" id="form-wrapper">
             <div>
-                <form id="change-form" th:action="changeMember" method="post" th:object="${accident}" enctype="multipart/form-data">
+                <form id="change-form" th:action="editMember" method="post" enctype="multipart/form-data">
                     <div id="form-header">
                         <h1>Din profil</h1>
                     </div>
                     <div  id="form-profile">
+                       <p>Förnamn</p>
+                        <input class="form-input" type="text" name="firstName" th:value="${changeFirstName}">
 
-                        <input class="form-input" type="text" th:field="*{ChangeFirstName}"
-                               placeholder="Ändra ditt efternamn">
+                        <p>Efternamn</p>
+                        <input class="form-input" type="text"  name="lastName"th:value="${changeLastName}">
 
-                        <input class="form-input" type="text" th:field="*{ChangeLastName}"
-                               placeholder="Ändra ditt förnamn">
+                        <p>Stad</p>
+                        <input class="form-input" type="text"  name="city"th:value="${changeCity}">
 
-                        <input class="form-input" type="text" th:field="*{ChangeAdress}"
-                               placeholder="Ändra din adress">
+                        <p>Adress</p>
+                        <input class="form-input" type="text"  name="address"th:value="${changeAddress}">
 
-                        <input class="form-input" type="text" th:field="*{ChangeEmail}"
-                               placeholder="Ändra din email">
+                        <p>Postnummer</p>
+                        <input class="form-input" type="text"  name="zipCode"th:value="${changeZipCode}">
 
-                        <input class="form-input" type="text" th:field="*{ChangePassword}"
-                               placeholder="Ändra ditt lösenord">
+                        <p>E-postadress</p>
+                        <input class="form-input" type="text"  name="eMail"th:value="${changeeMail}">
+
+                        <p>Telefonnummer</p>
+                        <input class="form-input" type="text"  name="phoneNumber"th:value="${changePhoneNumber}">
+
+                        <p>Lösenord</p>
+                        <input class="form-input" type="password"  name="password"th:value="${changePassword}">
 
 
                     </div>
                     <div id="form-footer">
-                        <button class="doneBtn" onclick="done()">Klar</button>
+                        <button class="doneBtn">Klar</button>
                     </div>
                 </form>
             </div>
@@ -62,9 +70,9 @@
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
                     <div>
-                        <div>Matilda Stekpannas</div>
-                        <div>KorstaHuset 2B 85636</div>
-                        <div>stekeln2000@hotmail.com</div>
+                        <p th:text="${changeFirstName}+${changeLastName}"></p>
+                        <p th:text="${changeAddress}+'  '+ ${changeZipCode}"></p>
+                        <p th:text="${changeeMail}"></p>
                     </div>
                 </div>
                 <div class="w50">
