@@ -43,8 +43,8 @@ public class AccidentController {
     }
 
     @PostMapping("/addNewAccident")
-    public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam("name") String[] names,
-                                 @RequestParam("file") MultipartFile[] files, HttpServletRequest request) {
+    public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam(value = "name", defaultValue = "null", required = false) String[] names,
+                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
