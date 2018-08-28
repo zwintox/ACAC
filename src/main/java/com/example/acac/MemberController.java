@@ -54,7 +54,7 @@ public class MemberController {
                              @RequestParam String lastName,
                              @RequestParam String city,
                              @RequestParam String address,
-                             @RequestParam String zipCode,
+                             @RequestParam int zipCode,
                              @RequestParam String eMail,
                              @RequestParam String phoneNumber,
                              @RequestParam String password) {

@@ -51,7 +51,7 @@ public class MemberRepository {
                             String lastName,
                             String city,
                             String address,
-                            String zipCode,
+                            int zipCode,
                             String eMail,
                             String phoneNumber,
                             String password) {
@@ -62,7 +62,7 @@ public class MemberRepository {
             ps.setString(2, lastName);
             ps.setString(3, city);
             ps.setString(4, address);
-            ps.setInt(5, Integer.parseInt(zipCode));
+            ps.setInt(5, (zipCode));
             ps.setString(6, eMail);
             ps.setString(7, phoneNumber);
             ps.setString(8, password);
