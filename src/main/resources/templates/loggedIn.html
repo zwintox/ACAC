@@ -125,7 +125,10 @@
 
                             <div>
                                 <p>Var polisen på plats?</p>
-                                <input type="checkbox" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
+                                <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
+                            </div>
+                            <div>
+                                <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="No">Nej
                             </div>
                             <div th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></div>
 
