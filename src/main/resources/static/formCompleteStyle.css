@@ -176,6 +176,11 @@ img{
     cursor: pointer;
 }
 
+.profileBtn:hover {
+    background-color: #5E929D;
+    color: white;
+}
+
 .flexContainer2 {
     display: flex;
     justify-content: flex-end;
@@ -194,6 +199,11 @@ img{
     margin: 35px 2px;
     cursor: pointer;
 
+}
+
+.newBtn:hover {
+    background-color: #007399;
+    color: white;
 }
 
 .formInput{
