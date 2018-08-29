@@ -40,7 +40,7 @@
                     <div id="form-content">
                         <div id="form-left">
 
-                            <input class="form-input" type="text" th:field="*{Regnr}" placeholder="Registreringsnummer" required="required">
+                            <input class="form-input uppercase" type="text" th:field="*{Regnr}" placeholder="Registreringsnummer" required="required">
                             <span th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></span>
 
                             <label for="forsakringsbolaginput">Försäkringsbolag:</label>
@@ -138,7 +138,7 @@
                                 <option th:value="'N'">Negativt</option>
                             </select>
 
-                            <input class="form-input" type="text" th:field="*{regnrmotpart}"
+                            <input class="form-input uppercase" type="text" th:field="*{regnrmotpart}"
                                    placeholder="Registreringsnummer motpart">
                             <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
                         </div>
