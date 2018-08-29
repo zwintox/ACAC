@@ -37,6 +37,8 @@ h1{
     display:flex;
     justify-content: center;
     flex-direction: column;
+    font-family:Arial;
+    color: gray;
 }
 
 #form-header{
@@ -69,11 +71,9 @@ h1{
     color:white;
     padding:25px 20px;
 }
-#profile-picture{
-    background-color: blue;
+#profileIcon{
     height: 100px;
     width: 100px;
-    border-radius: 100%;
 }
 #profile-title{
     font-size:25px;
