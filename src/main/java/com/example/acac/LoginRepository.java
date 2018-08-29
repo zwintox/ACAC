@@ -38,7 +38,8 @@ public class LoginRepository {
                         resultSet.getString("zipCode"),
                         resultSet.getString("eMail"),
                         resultSet.getString("phoneNumber"),
-                        resultSet.getString("password"));
+                        resultSet.getString("password"),
+                        resultSet.getInt("Antal"));
 
             }
             conn.close();

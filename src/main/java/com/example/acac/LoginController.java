@@ -62,6 +62,7 @@ public class LoginController {
         model.addAttribute("Password",member.getPassword());
         model.addAttribute("PhoneNumber",member.getPhoneNumber());
         model.addAttribute("City",member.getCity());
+        model.addAttribute("Antal",member.getAntal());
 
         if (session != null) {
             return "loggedIn";
@@ -90,6 +91,7 @@ public class LoginController {
         model.addAttribute("changePassword",member.getPassword());
         model.addAttribute("changePhoneNumber",member.getPhoneNumber());
         model.addAttribute("changeCity",member.getCity());
+        model.addAttribute("Antal",member.getAntal());
         return "profileInfo";
     }
 
@@ -105,6 +107,7 @@ public class LoginController {
         model.addAttribute("formCompletePassword",member.getPassword());
         model.addAttribute("formCompletePhoneNumber",member.getPhoneNumber());
         model.addAttribute("formCompleteCity",member.getCity());
+        model.addAttribute("Antal",member.getAntal());
         return "formComplete";
     }
 
