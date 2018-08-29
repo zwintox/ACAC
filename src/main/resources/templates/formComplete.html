@@ -13,6 +13,15 @@
         window.location.href = "http://localhost:8080/loggedIn"
     }
 
+    function logout() {
+        window.location.href = "http://localhost:8080/LogOut"
+    }
+
+
+    function change() {
+        window.location.href = "http://localhost:8080/change"
+    }
+
 </script>
 
 <div id="logged-in-wrapper">
@@ -45,7 +54,7 @@
 
         <!--Användare-->
         <div class="w30" id="user-wrapper">
-            <div id="profile-title">Din profil</div>
+            <div id="profile-title">Min profil</div>
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
                     <div>
@@ -55,17 +64,19 @@
                     </div>
                 </div>
                 <div class="w50">
-                    <div id="profile-picture"></div>
+                    <div id="profile-picture" >
+                        <a href="#0"><img id="profileIcon" src="profileIcon.png" alt="profileIcon">
+                        </a></div>
                 </div>
             </div>
 
             <div>
                 <div>
 
-                    <Button class="profileBtn">Ändra min information</Button>
+                    <Button class="profileBtn" onclick="change()">Ändra min information</Button>
                 </div>
                 <div>
-                    <Button class="profileBtn">Logga ut</Button>
+                    <Button class="profileBtn" onclick="logout()">Logga ut</Button>
                 </div>
             </div>
 

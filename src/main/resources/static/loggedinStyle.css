@@ -67,11 +67,10 @@ h1{
     color:white;
     padding:25px 20px;
 }
-#profile-picture{
-    background-color: blue;
+#profileIcon{
     height: 100px;
     width: 100px;
-    border-radius: 100%;
+
 }
 #profile-title{
     font-size:25px;
@@ -171,7 +170,7 @@ img{
 }
 
 .profileBtn:hover {
-    background-color: #246875;
+    background-color: #5E929D;
     color: white;
 }
 
@@ -197,7 +196,7 @@ img{
 }
 
 .formBtn:hover {
-    background-color: #246875;
+    background-color:#007399;
     color: white;
 }
 

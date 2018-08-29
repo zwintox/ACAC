@@ -37,6 +37,8 @@ h1{
     display:flex;
     justify-content: center;
     flex-direction: column;
+    font-family:Arial;
+    color: gray;
 }
 
 #form-header{
@@ -63,15 +65,15 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+
 #user-wrapper{
     color:white;
     padding:25px 20px;
 }
-#profile-picture{
-    background-color: blue;
+#profileIcon{
     height: 100px;
     width: 100px;
-    border-radius: 100%;
 }
 #profile-title{
     font-size:25px;
@@ -177,6 +179,12 @@ img{
     cursor: pointer;
 }
 
+.profileBtn:hover {
+    background-color: #5E929D;
+    color: white;
+}
+
+
 .flexContainer2 {
     display: flex;
     justify-content: flex-end;
@@ -196,6 +204,12 @@ img{
     cursor: pointer;
 
 }
+
+.doneBtn:hover {
+    background-color: #007399;
+    color: white;
+}
+
 
 .formInput{
     border-radius: 5px;
