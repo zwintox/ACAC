@@ -3,6 +3,7 @@ package com.example.acac;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.validation.Valid;
@@ -37,21 +39,28 @@ public class AccidentController {
     public String getNewAccident(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            return "loggedIn";
+            return "redirect:loggedIn";
         }
         return "redirect:login";
     }
 
     @PostMapping("/addNewAccident")
     public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam(value = "name", defaultValue = "null", required = false) String[] names,
-                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request) {
+                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request, Model model) throws MessagingException {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
+            model.addAttribute("FirstName",member.getFirstName());
+            model.addAttribute("LastName",member.getLastName());
+            model.addAttribute("eMail",member.geteMail());
+            model.addAttribute("Address",member.getAddress());
+            model.addAttribute("ZipCode",member.getZipCode());
+            model.addAttribute("Password",member.getPassword());
+            model.addAttribute("PhoneNumber",member.getPhoneNumber());
+            model.addAttribute("City",member.getCity());
             if(bindingResult.hasErrors()){
                 return "loggedIn";
             }
-
 
                 int accidentID = accidentRepository.addNewAccident(
                         accident.getRegnr(),
@@ -71,8 +80,6 @@ public class AccidentController {
                         member.getID());
 
             String source;
-
-
 
             if (files.length > 0) {
 
@@ -102,24 +109,13 @@ public class AccidentController {
                     } catch (Exception e) {
                         return "You failed to upload " + name + " => " + e.getMessage();
                     }
-
-
                     photoRepository.addPhoto(source, accidentID, member.getID(), name);
                 }
             }
-
-
-
+            Mail.generateClaimMessage(member.getFirstName(), member.geteMail());
                 return "redirect:formComplete";
-
             } else {
             return "index";
         }
     }
-    @GetMapping ("/NewForm")
-    public String NewForm (Member member){
-        return "loggedIn";
-    }
-
-
 }

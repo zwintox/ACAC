@@ -40,15 +40,15 @@
                         <h1> <strong>Skadeanmälan</strong></h1>
                     </div>
                     <div id="form-content">
-                        <div id="form-left">
+                        <div id="form-center">
 
                             <input class="form-input uppercase" type="text" th:field="*{Regnr}" onkeydown="upperCaseF(this)" placeholder="Registreringsnummer" required="required">
                             <span th:if="${#fields.hasErrors('Regnr')}" th:errors="*{Regnr}"></span>
 
-                            <label for="forsakringsbolaginput">Försäkringsbolag:</label>
+
                             <select class="form-select" id="forsakringsbolaginput" th:field="*{Försäkringsbolag}"
-                                    name="bolag">
-                                <option th:value="''"></option>
+                                    name="bolag" required>
+                                <option value="" hidden selected>Försäkringsbolag</option>
                                 <option th:value="'A'">Aktsam</option>
                                 <option th:value="'F'">Folksam</option>
                                 <option th:value="'I'">If</option>
@@ -59,9 +59,8 @@
                             </select>
 
 
-                            <label for="omstandighet">Omständighet:</label>
-                            <select class="form-select" id="omstandighet" th:field="*{Omständighet}">
-                                <option th:value="''"></option>
+                            <select class="form-select" id="omstandighet" th:field="*{Omständighet}" required>
+                                <option value="" hidden selected>Omständighet</option>
                                 <option th:value="'F'">Frontalkrock</option>
                                 <option th:value="'B'">Backningsolycka</option>
                                 <option th:value="'A'">Avkörning på väg</option>
@@ -69,7 +68,7 @@
                                 <option th:value="'M'">Mindre skador</option>
 
                             </select>
-                            Datum för olyckan:
+                            <label for="start">Datum för olyckan</label>
                             <input class="form-input" type="date" th:field="*{Skadedag}" id="start" name="trip"
                                    value="2018-07-22"
 
@@ -80,7 +79,7 @@
                             <input class="form-input" type="text" th:field="*{Skadeplats}" placeholder="Skadeplats" required="required">
                             <span th:if="${#fields.hasErrors('Skadeplats')}" th:errors="*{Skadeplats}"></span>
 
-                        <div id="map" style="width:250px;height:60px;background:yellow"></div>
+                        <div id="map" ></div>
 
                         <script>
                             function myMap() {
@@ -115,17 +114,16 @@
                             <span th:if="${#fields.hasErrors('DriverPhoneNumber')}"
                                   th:errors="*{DriverPhoneNumber}"></span>
 
-                            <label for="handelseforlopp">Beskriv händelseförloppet:</label>
-                            <textarea id="handelseforlopp" class="form-input" name="message"
-                                      th:field="*{Händelseförlopp}" rows="10" cols="30" required="required">
+
+                            <textarea id="handelseforlopp" class="form-input" name="message" style="resize:vertical"
+                                      th:field="*{Händelseförlopp}" placeholder="Beskriv händelseförlopp" rows="10" cols="30" required="required">
                         </textarea>
 
                             <span th:if="${#fields.hasErrors('Händelseförlopp')}" th:errors="*{Händelseförlopp}"></span>
 
-                            <label for="skadorinput">Skador på er bil:</label>
-                            <input class="form-input" id="skadorinput" type="text" th:field="*{SkadorPåBilen}">
+                            <input class="form-input" id="skadorinput" type="text" th:field="*{SkadorPåBilen}" placeholder="Skador på bil">
 
-                            <div>
+                            <div id="polispaplats">
                                 <p>Var polisen på plats?</p>
                                 <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
                             </div>
@@ -135,10 +133,9 @@
                             <div th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></div>
 
 
-                            <label for="utandningsprov">Utandningsprov:</label>
-                            <select class="form-select" id="utandningsprov" th:field="*{Utandningsprov}"
-                                    placeholder="Utandningsprov">
-                                <option th:value="''"></option>
+
+                            <select class="form-select" id="utandningsprov" th:field="*{Utandningsprov}" required>
+                                <option value="" hidden selected>Utandningsprov</option>
                                 <option th:value="'P'">Positivt</option>
                                 <option th:value="'N'">Negativt</option>
                             </select>
@@ -146,16 +143,50 @@
                             <input class="form-input uppercase" type="text" onkeydown="upperCaseF(this)" th:field="*{regnrmotpart}"
                                    placeholder="Registreringsnummer motpart">
                             <p th:if="${#fields.hasErrors('regnrmotpart')}" th:errors="*{regnrmotpart}"></p>
+
+
+                            <div>
+                                <div>
+                                    <div style="
+    margin-bottom:  10px;
+">
+                                        <label for="file-upload1" class="custom-file-upload">
+                                            Ladda bild 1:
+                                        </label>
+                                        <input id="file-upload1" class="hidden-input" name="file"type="file"/>
+                                    </div>
+
+                                    <div>
+                                         <textarea id="area-file1" class="form-input" name="area-file1" style="resize:vertical"
+                                                   rows="10" cols="30" required="required">
+                                        </textarea>
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <div style="
+    margin-bottom:  10px;
+">
+                                        <label for="file-upload2" class="custom-file-upload">
+                                            Ladda bild 2:
+                                        </label>
+                                        <input id="file-upload2"  class="hidden-input" name="file"type="file"/>
+                                    </div>
+
+                                    <div>
+                                        <textarea id="area-file2" class="form-input" name="area-file1" style="resize:vertical"
+                                                      rows="10" cols="30" required="required">
+                                        </textarea>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
                         </div>
 
-                        <div id="form-right">
-                            <div>
-                                Ladda bild 1: <input type="file" name="file">
-                                Beskrivning bild 1: <input type="text" name="name"><br/>
-                                Ladda bild 2: <input type="file" name="file">
-                                Beskrivning bild 2: <input type="text" name="name"><br/>
-                            </div>
-                        </div>
                     </div>
                     <div id="form-footer">
                         <button class="formBtn">Skicka</button>
@@ -170,7 +201,7 @@
             <div id="profile-title">Min profil</div>
             <div class="flex-2-col">
                 <div id="user-details" class="w50">
-                    <div>
+                    <div id="profile-Text">
                         <p th:text="${FirstName}+' ' +${LastName}"></p>
                         <p th:text="${Address}+'  '+ ${ZipCode}"></p>
                         <p th:text="${eMail}"></p>
