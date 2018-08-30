@@ -8,7 +8,7 @@ h1{
     font-family: Verdana Pro Light;
     font-size: 16px;
     color:#3599ae;
-    font-size: 20px;
+    font-size: 25px;
 
 }
 select:required:invalid {
@@ -21,6 +21,14 @@ option[value=""][disabled] {
 }
 option[value=""][selected] {
     color: gray;
+}
+
+#Logo{
+    height: 70px;
+}
+
+#icon{
+    height: 135px;
 }
 #logged-in-wrapper{
 }
@@ -173,7 +181,7 @@ option[value=""][selected] {
 
 }
 
-img{
+#logged-in-bar{
     height: 70px;
 
 }

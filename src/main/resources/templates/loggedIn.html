@@ -26,18 +26,23 @@
 
 <div id="logged-in-wrapper">
     <div id="logged-in-bar">
-        <a href="#0"><img src="logolightblue.png" alt="Logo"></a>
+        <a href="#0"><img id="Logo" src="logolightblue.png" alt="Logo"></a>
     </div>
 
     <div id="logged-in-content">
 
         <!--Formulär-->
+
+
+
+
         <div class="w70" id="form-wrapper">
             <div>
                 <form id="accident-form" th:action="addNewAccident" method="post" th:object="${accident}"
                       enctype="multipart/form-data">
                     <div id="form-header">
-                        <h1> <strong>Skadeanmälan</strong></h1>
+                        <a href="#0"><img id="icon" src="doclogoblå2.png" alt="Logo"></a> <h1> <strong>Skadeanmälan</strong></h1>
+
                     </div>
                     <div id="form-content">
                         <div id="form-center">
@@ -125,10 +130,9 @@
 
                             <div id="polispaplats">
                                 <p>Var polisen på plats?</p>
-                                <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja
-                            </div>
-                            <div>
-                                <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="No">Nej
+                                <div> <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="Yes">Ja</div>
+
+                                <div> <input type="radio" th:field="*{PolisPåPlats}" name="PolisPåPlats" value="No">Nej</div>
                             </div>
                             <div th:if="${#fields.hasErrors('PolisPåPlats')}" th:errors="*{PolisPåPlats}"></div>
 
@@ -147,9 +151,7 @@
 
                             <div>
                                 <div>
-                                    <div style="
-    margin-bottom:  10px;
-">
+                                    <div style="margin-bottom:  10px;">
                                         <label for="file-upload1" class="custom-file-upload">
                                             Ladda bild 1:
                                         </label>
@@ -164,9 +166,7 @@
 
                                 </div>
                                 <div>
-                                    <div style="
-    margin-bottom:  10px;
-">
+                                    <div style="margin-bottom:  10px;">
                                         <label for="file-upload2" class="custom-file-upload">
                                             Ladda bild 2:
                                         </label>
@@ -205,7 +205,7 @@
                         <p th:text="${FirstName}+' ' +${LastName}"></p>
                         <p th:text="${Address}+'  '+ ${ZipCode}"></p>
                         <p th:text="${eMail}"></p>
-                        <p th:text="${Antal}"></p>
+                        Skickade anmälningar:</p><p th:text="${Antal}"></p>
                     </div>
                 </div>
                 <div class="w50">
