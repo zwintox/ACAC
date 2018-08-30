@@ -158,3 +158,10 @@ jQuery.fn.putCursorAtEnd = function() {
 jQuery('#cody-info ul li').eq(1).on('click', function(){
     $('#cody-info').hide();
 });
+
+
+function upperCaseF(a){
+    setTimeout(function(){
+        a.value = a.value.toUpperCase();
+    }, 1);
+}

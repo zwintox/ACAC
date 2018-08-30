@@ -27,10 +27,23 @@ public class Member {
     private String phoneNumber;
     @Size(max = 20, min = 8)
     private String password;
+    int Antal;
 
     public Member() {
     }
 
+    public Member(int ID, @Size(max = 12, min = 10) String personalNumber, @NotEmpty @NotNull String firstName, @NotEmpty String lastName, @NotEmpty String city, @NotEmpty String address, @Digits(integer = 5, fraction = 0) String zipCode, @Email String eMail, @Size(max = 15, min = 7) String phoneNumber, @Size(max = 20, min = 8) String password) {
+        this.ID = ID;
+        this.personalNumber = personalNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.eMail = eMail;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
 
     public Member(int ID,
                   String personalNumber,
@@ -41,7 +54,8 @@ public class Member {
                   String zipCode,
                   String eMail,
                   String phoneNumber,
-                  String password) {
+                  String password,
+                  int Antal) {
 
         this.ID = ID;
         this.personalNumber = personalNumber;
@@ -53,6 +67,7 @@ public class Member {
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.Antal = Antal;
     }
 
     public Member(int ID) {
@@ -144,5 +159,13 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getAntal() {
+        return Antal;
+    }
+
+    public void setAntal(int antal) {
+        Antal = antal;
     }
 }
