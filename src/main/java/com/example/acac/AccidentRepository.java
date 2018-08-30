@@ -27,7 +27,7 @@ public class AccidentRepository {
 
         try {
             conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement(" EXEC GetMatched");
+            PreparedStatement ps = conn.prepareStatement("EXEC GetClaims");
 
             ResultSet rs = ps.executeQuery();
 
@@ -128,6 +128,27 @@ public class AccidentRepository {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public void setSkickad(String Regnr1, String Regnr2){
+
+        Connection conn;
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("Exec SetSent @Regnr1=?, @Regnr2 =?");
+
+            ps.setString(1, Regnr1);
+            ps.setString(2, Regnr2);
+
+            ps.executeUpdate();
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
