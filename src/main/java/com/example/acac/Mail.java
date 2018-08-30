@@ -59,5 +59,27 @@ public class Mail {
         transport.connect("smtp.gmail.com", "no.reply.acac@gmail.com", "acac2018");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
+    }public static void generateInsuranceCompanyClaimMessage(String firstname, String email) throws AddressException, MessagingException {
+
+        mailServerProperties = System.getProperties();
+        mailServerProperties.put("mail.smtp.port", "587");
+        mailServerProperties.put("mail.smtp.auth", "true");
+        mailServerProperties.put("mail.smtp.starttls.enable", "true");
+
+        getMailSession = Session.getDefaultInstance(mailServerProperties, null);
+        generateMailMessage = new MimeMessage(getMailSession);
+        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+        //additional address - generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("test2@crunchify.com"));
+        generateMailMessage.setSubject("En av dina kunder har råkat ut för en olycka");
+        String emailBody = "Hej " + firstname + "!" + "<br><br>" + "Hej, vi har mottagit en skaderapport från en av era kunder. " + "</a>" +
+                "Nedan finner du er kund, samt motpartens skadeanmälan." + "</a>"
+                + "<br><br> Med vänliga hälsningar, <br>ACAC";
+        generateMailMessage.setContent(emailBody, "text/html; charset=utf-8");
+
+        Transport transport = getMailSession.getTransport("smtp");
+
+        transport.connect("smtp.gmail.com", "no.reply.acac@gmail.com", "acac2018");
+        transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+        transport.close();
     }
 }
