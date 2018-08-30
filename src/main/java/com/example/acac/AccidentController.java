@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.validation.Valid;
@@ -45,7 +46,7 @@ public class AccidentController {
 
     @PostMapping("/addNewAccident")
     public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam(value = "name", defaultValue = "null", required = false) String[] names,
-                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request, Model model) {
+                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request, Model model) throws MessagingException {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
@@ -60,7 +61,6 @@ public class AccidentController {
             if(bindingResult.hasErrors()){
                 return "loggedIn";
             }
-
 
                 int accidentID = accidentRepository.addNewAccident(
                         accident.getRegnr(),
@@ -80,8 +80,6 @@ public class AccidentController {
                         member.getID());
 
             String source;
-
-
 
             if (files.length > 0) {
 
@@ -111,16 +109,11 @@ public class AccidentController {
                     } catch (Exception e) {
                         return "You failed to upload " + name + " => " + e.getMessage();
                     }
-
-
                     photoRepository.addPhoto(source, accidentID, member.getID(), name);
                 }
             }
-
-
-
+            Mail.generateClaimMessage(member.getFirstName(), member.geteMail());
                 return "redirect:formComplete";
-
             } else {
             return "index";
         }
