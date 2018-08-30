@@ -3,6 +3,7 @@ package com.example.acac;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,17 +38,25 @@ public class AccidentController {
     public String getNewAccident(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            return "loggedIn";
+            return "redirect:loggedIn";
         }
         return "redirect:login";
     }
 
     @PostMapping("/addNewAccident")
     public String addNewAccident(@Valid Accident accident, BindingResult bindingResult, @RequestParam(value = "name", defaultValue = "null", required = false) String[] names,
-                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request) {
+                                 @RequestParam(value = "file", defaultValue = "null", required = false) MultipartFile[] files, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Member member = (Member) session.getAttribute("member");
+            model.addAttribute("FirstName",member.getFirstName());
+            model.addAttribute("LastName",member.getLastName());
+            model.addAttribute("eMail",member.geteMail());
+            model.addAttribute("Address",member.getAddress());
+            model.addAttribute("ZipCode",member.getZipCode());
+            model.addAttribute("Password",member.getPassword());
+            model.addAttribute("PhoneNumber",member.getPhoneNumber());
+            model.addAttribute("City",member.getCity());
             if(bindingResult.hasErrors()){
                 return "loggedIn";
             }
@@ -116,10 +125,4 @@ public class AccidentController {
             return "index";
         }
     }
-    @GetMapping ("/NewForm")
-    public String NewForm (Member member){
-        return "loggedIn";
-    }
-
-
 }
