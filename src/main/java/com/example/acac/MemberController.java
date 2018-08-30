@@ -9,11 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @Controller
 public class MemberController {
@@ -31,7 +39,7 @@ public class MemberController {
 
     @PostMapping("/")
 
-    public String addMember(@Valid Member member, BindingResult bindingResult, Model model) {
+    public String addMember(@Valid Member member, BindingResult bindingResult, Model model) throws MessagingException {
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", true);
             return "index";
@@ -46,6 +54,7 @@ public class MemberController {
                     member.getPhoneNumber(),
                     member.getPassword());
             model.addAttribute("error",false);
+            Mail.generateRegistrationMessage(member.getFirstName(), member.geteMail());
             return "index";
         }
     }
