@@ -49,7 +49,7 @@ public class Mail {
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
         //additional address - generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("test2@crunchify.com"));
         generateMailMessage.setSubject("ACAC tackar för din anmälan!");
-        String emailBody = "Hej " + firstname + "!" + "<br><br>" + "Hej, vi har nu mottagit din anmälan. " + "</a>" +
+        String emailBody = "Hej " + firstname + "," + "<br><br>" + "vi har nu mottagit din anmälan. " + "</a>" +
                 "Så snart motparten skickat in sin anmälan kommer vi matcha ihop dessa och skicka till båda era försäkringsbolag." + "</a>"
                 + "<br><br> Med vänliga hälsningar, <br>ACAC";
         generateMailMessage.setContent(emailBody, "text/html; charset=utf-8");
