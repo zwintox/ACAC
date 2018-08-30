@@ -112,7 +112,7 @@ public class AccidentController {
                     photoRepository.addPhoto(source, accidentID, member.getID(), name);
                 }
             }
-            Mail.generateClaimMessage(member.getFirstName(), member.geteMail());
+                Mail.generateClaimMessage(member.getFirstName(), member.geteMail());
                 return "redirect:formComplete";
             } else {
             return "index";
