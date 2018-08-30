@@ -19,12 +19,15 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 @Controller
 public class MemberController {
+
+
     @Autowired
     MemberRepository memberRepository;
     @Autowired
@@ -39,11 +42,12 @@ public class MemberController {
 
     @PostMapping("/")
 
-    public String addMember(@Valid Member member, BindingResult bindingResult, Model model) throws MessagingException {
+    public String addMember(@Valid Member member, BindingResult bindingResult, Model model) throws MessagingException, NoSuchAlgorithmException {
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", true);
             return "index";
         } else  {
+            Encryption.encrypt(member.getPassword());
             boolean emailexist =
             mr.addMember(member.getPersonalNumber(),
                     member.getFirstName(),
@@ -54,6 +58,7 @@ public class MemberController {
                     member.geteMail(),
                     member.getPhoneNumber(),
                     member.getPassword());
+                    // Encryption.encrypt(member.getPassword()));
             model.addAttribute("error",false);
           
             if (emailexist == true){
