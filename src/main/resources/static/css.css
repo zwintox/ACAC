@@ -319,6 +319,7 @@ header[role=banner]::after {
     }
     .main-nav ul {
         position: static;
+        border-radius: 4px;
         width: auto;
         -webkit-transform: translateY(0);
         -moz-transform: translateY(0);
@@ -354,13 +355,14 @@ header[role=banner]::after {
     }
     .main-nav a.cd-signin, .main-nav a.cd-signup {
         padding: .6em 1em;
+        border-radius: 4px;
         color: #0040ff;
         border: 1px solid rgba(0, 64, 255, 0.6);
-        border-radius: 50em;
         justify-content: center;
     }
     .main-nav a.cd-signup {
-        background: #0040ff;
+        background: #73B0BC;
+        border-radius: 4px;
         color: white;
         border: none;
         justify-content: center;
