@@ -49,7 +49,11 @@
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signin-password">Lösenord</label>
                     <input class="full-width has-padding has-border" id="signin-password" type="password" name="password"  placeholder="Lösenord">
+
                     <a href="#0" class="hide-password">Visa</a>
+
+                    <a href="#0" class="hide-password">Show</a>
+
                     <span class="cd-error-message">Felaktigt lösenord.</span>
                 </p>
 
@@ -128,7 +132,7 @@
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signup-password">Lösenord</label>
                     <input class="full-width has-padding has-border" th:field="*{password}" name="password" id="signup-password" type="text"  placeholder="Lösenord">
-                    <a href="#0" class="hide-password">Dölj</a>
+                    <a href="#0" class="hide-password">Show</a>
                     <span class="cd-error-message">Fyll o ditt lösenord här.</span>
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 </p>
