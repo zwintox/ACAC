@@ -36,7 +36,7 @@
             <div>
                 <form id="change-form" th:action="editMember" method="post" enctype="multipart/form-data">
                     <div id="form-header">
-                        <h1>Ändra min information</h1>
+                        <a href="#0"><img id="icon2" src="pennaiconblå.png" alt="Logo"></a> <h1>Ändra min information</h1>
                     </div>
                     <div  id="form-profile">
                        <p>Förnamn</p>
@@ -82,6 +82,7 @@
                         <p th:text="${changeFirstName}+' ' +${changeLastName}"></p>
                         <p th:text="${changeAddress}+'  '+ ${changeZipCode}"></p>
                         <p th:text="${changeeMail}"></p>
+                        Skickade anmälningar:</p><p th:text="${Antal}"></p>
                     </div>
                 </div>
                 <div class="w50">
