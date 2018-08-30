@@ -35,7 +35,8 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", true);
             return "index";
-        } else {
+        } else  {
+            boolean emailexist =
             mr.addMember(member.getPersonalNumber(),
                     member.getFirstName(),
                     member.getLastName(),
@@ -46,8 +47,16 @@ public class MemberController {
                     member.getPhoneNumber(),
                     member.getPassword());
             model.addAttribute("error",false);
+            if (emailexist == true){
+
+                model.addAttribute("error", true);
+                model.addAttribute("errormedelande", "Finns redan en användare med denna Email.");
+            }
+
+
             return "index";
         }
+
     }
 
     @PostMapping("/editMember")
