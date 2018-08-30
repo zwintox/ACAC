@@ -14,6 +14,7 @@ h1{
 
 #icon2 {
     height: 135px;
+    text-align: center;
 }
 #logged-in-wrapper{
 }
@@ -48,6 +49,7 @@ h1{
 
 #form-header{
     padding:20px;
+    text-align: center;
 }
 
 #form-left{
