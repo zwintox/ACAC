@@ -358,7 +358,6 @@ header[role=banner]::after {
         border-radius: 4px;
         color: #0040ff;
         border: 1px solid rgba(0, 64, 255, 0.6);
-        border-radius: 50em;
         justify-content: center;
     }
     .main-nav a.cd-signup {
