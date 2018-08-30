@@ -5,10 +5,7 @@ import org.springframework.stereotype.Component;
 
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 @Component
@@ -17,7 +14,7 @@ public class MemberRepository {
     public DataSource dataSource;
 
     Connection conn = null;
-    public void addMember(String personalNumber,
+    public boolean addMember(String personalNumber,
                           String firstName,
                           String lastName,
                           String city,
@@ -31,6 +28,7 @@ public class MemberRepository {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("EXEC CreateUser @personalNumber = ?,@firstName = ?, @lastName = ?, @city = ?, @address = ?, @zipCode = ?,@eMail = ?, @phoneNumber = ?, @password = ?", new String[]{"id"});
 
+
             ps.setString(1, personalNumber);
             ps.setString(2, firstName);
             ps.setString(3, lastName);
@@ -40,13 +38,32 @@ public class MemberRepository {
             ps.setString(7, eMail);
             ps.setString(8, phoneNumber);
             ps.setString(9, password);
-            ps.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
+
+            if (doesColumnExist("result", resultSet)) {
+
+                return true;
+            } else {
+                System.out.println("mail finns inte");
+            }
+            resultSet.next();
+
+
+
+
             conn.close();
+
+            return false;
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
+
+
+
     public void editMember (int ID,
                             String password,
                             String firstName,
@@ -76,5 +93,18 @@ public class MemberRepository {
             e.printStackTrace();
         }
         }
+
+    public static boolean doesColumnExist(String columnName, ResultSet rs) throws SQLException{
+        ResultSetMetaData meta = rs.getMetaData();
+        int numCol = meta.getColumnCount();
+        for (int i = 1; i <= numCol; i++) {
+            if(meta.getColumnName(i).equalsIgnoreCase(columnName)) {
+                return true;
+
+            }
+
+        }
+        return false;
+    }
 }
 

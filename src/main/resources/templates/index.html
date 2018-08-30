@@ -127,6 +127,7 @@
                     <input class="full-width has-padding has-border" th:field="*{eMail}" name="eMail" id="signup-email" type="email" placeholder="E-mail">
                     <span class="cd-error-message">Fyll i din email här.</span>
                 <p th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"></p>
+                <p th:if="${error}" th:text="${errormedelande}"></p>
                 </p>
 
                 <p class="fieldset">

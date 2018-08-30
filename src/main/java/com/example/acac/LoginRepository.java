@@ -27,6 +27,7 @@ public class LoginRepository {
             ps.setString(1, eMail);
             ps.setString(2, password);
             ResultSet resultSet = ps.executeQuery();
+
             if (resultSet.next()) {
 
                 return new Member(resultSet.getInt("ID"),
@@ -44,9 +45,11 @@ public class LoginRepository {
             }
             conn.close();
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
 
     }
