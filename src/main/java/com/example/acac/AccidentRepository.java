@@ -31,7 +31,7 @@ public class AccidentRepository {
 
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+            while(rs.next()) {
                 List<Accident> accidentPair = new ArrayList<>();
                 accidentPair.add(new Accident(rs.getString("Regnr1"),
                         rs.getString("Försäkringsbolag1"),
