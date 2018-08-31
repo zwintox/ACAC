@@ -13,7 +13,7 @@ public class ScheduledTasks {
     private AccidentRepository accidentRepository;
 
     @Scheduled(fixedRate = 5000)
-    //@Scheduled(cron = "0 * * * *
+    //@Scheduled(cron = "0 * * * *")
 
     public void sendMail() {
         List<List<Accident>> matchedAccidents = accidentRepository.getMatchedAccidents();
