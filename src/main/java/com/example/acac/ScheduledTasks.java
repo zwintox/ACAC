@@ -12,8 +12,8 @@ public class ScheduledTasks {
     @Autowired
     private AccidentRepository accidentRepository;
 
-    @Scheduled(fixedRate = 5000)
-    //@Scheduled(cron = "0 * * * *
+    @Scheduled(fixedRate = 15000)
+    //@Scheduled(cron = "0 * * * *")
 
     public void sendMail() {
         List<List<Accident>> matchedAccidents = accidentRepository.getMatchedAccidents();
