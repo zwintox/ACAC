@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestParam String eMail,
                         @RequestParam String password,
-                        HttpServletRequest request) {
+                        HttpServletRequest request) throws NoSuchAlgorithmException {
 
         Member member = lr.getMember(eMail, password);
         if (member != null) {
