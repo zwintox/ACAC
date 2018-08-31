@@ -67,8 +67,7 @@ public class ScheduledTasks {
             accidentRepository.setSkickad(accidentPair.get(0).getRegnr(),accidentPair.get(1).getRegnr());
 
             String body0 = new StringBuilder()
-                    .append("Hej din kund har gjort en anmälan.\n")
-                    .append("Nedan finner du din kunds skaderapport.\n")
+
                     .append(String.format("Förnamn: %s%n<br>", accidentPair.get(0).getDriverFirstName()))
                     .append(String.format("Efternamn: %s%n<br>", accidentPair.get(0).getDriverLastName()))
                     .append(String.format("Personnummer: %s%n<br>", accidentPair.get(0).getDriverPersonalID()))
@@ -82,12 +81,13 @@ public class ScheduledTasks {
                     .append(String.format("Reslutat av utandningsprov: %s%n<br>", accidentPair.get(0).getUtandningsprov()))
                     .append(String.format("Registreringsnummer på motpart: %s%n<br>", accidentPair.get(0).getRegnrmotpart()))
                     .append(String.format("Omständighet: %s%n<br>", accidentPair.get(0).getOmständighet()))
-                    .append(String.format("Händelseförlopp: %s%n<br>", accidentPair.get(0).getHändelseförlopp()))
+                    .append(String.format("Händelseförlopp: %s%n<br><br><br><br><br>", accidentPair.get(0).getHändelseförlopp()))
                     .toString();
 
             String body1 = new StringBuilder()
-                    .append("Hej din kund har gjort en anmälan.\n<br>")
-                    .append("Nedan finner du din kunds skaderapport.\n<br>")
+                   // .append("Hej din kund har gjort en anmälan.\n<br>")
+                    //.append("Nedan finner du din kunds skaderapport.\n<br>")
+
                     .append(String.format("Förnamn: %s%n<br>", accidentPair.get(1).getDriverFirstName()))
                     .append(String.format("Efternamn: %s%n<br>", accidentPair.get(1).getDriverLastName()))
                     .append(String.format("Personnummer: %s%n<br>", accidentPair.get(1).getDriverPersonalID()))
@@ -101,11 +101,27 @@ public class ScheduledTasks {
                     .append(String.format("Reslutat av utandningsprov: %s%n<br>", accidentPair.get(1).getUtandningsprov()))
                     .append(String.format("Registreringsnummer på motpart: %s%n<br>", accidentPair.get(1).getRegnrmotpart()))
                     .append(String.format("Omständighet: %s%n<br>", accidentPair.get(1).getOmständighet()))
-                    .append(String.format("Händelseförlopp: %s%n<br>", accidentPair.get(1).getHändelseförlopp()))
+                    .append(String.format("Händelseförlopp: %s%n<br><br><br><br><br>", accidentPair.get(1).getHändelseförlopp()))
                     .toString();
 
-            Mail.generateInsuranceCompanyClaimMessage(accidentPair.get(0).getDriverFirstName(), "no.reply.acac@gmail.com", body0);
-            Mail.generateInsuranceCompanyClaimMessage(accidentPair.get(1).getDriverFirstName(), "no.reply.acac@gmail.com", body1);
+            String body2 = new StringBuilder()
+                    .append("Hej din kund har gjort en anmälan.\n<br><br>")
+                    .append("Nedan finner du din kunds skaderapport.\n<br><br>")
+                    .append(body0)
+                    .append("Nedan finner du motpartens skaderapport.\n<br><br><br><br>")
+                    .append(body1)
+                    .toString();
+
+            String body3 = new StringBuilder()
+                    .append("Hej din kund har gjort en anmälan.\n<br><br>")
+                    .append("Nedan finner du din kunds skaderapport.\n<br><br>")
+                    .append(body1)
+                    .append("Nedan finner du motpartens skaderapport.\n<br><br><br><br>")
+                    .append(body0)
+                    .toString();
+
+            Mail.generateInsuranceCompanyClaimMessage(accidentPair.get(0).getDriverFirstName(), "no.reply.acac@gmail.com", body2);
+            Mail.generateInsuranceCompanyClaimMessage(accidentPair.get(1).getDriverFirstName(), "no.reply.acac@gmail.com", body3);
 
             System.out.println(skadedag1);
             System.out.println(Regnr1 + " " +Regnr2);

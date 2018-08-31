@@ -72,7 +72,7 @@ public class Mail {
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
         //additional address - generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("test2@crunchify.com"));
-        generateMailMessage.setSubject("En av dina kunderhar råkat ut för en olycka");
+        generateMailMessage.setSubject("En av dina kunder har råkat ut för en olycka");
 
         generateMailMessage.setContent(body, "text/html; charset=utf-8");
 
