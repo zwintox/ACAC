@@ -9,7 +9,7 @@ public class Encryption {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(salt);
+         //   md.update(salt);
             byte[] bytes = md.digest(passwordToHash.getBytes());
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.length; i++)
@@ -39,12 +39,5 @@ public class Encryption {
         return securePassword;
     }
 
-    public static boolean checkPassword(String password, String hashedPassword) throws NoSuchAlgorithmException{
-        MessageDigest md = MessageDigest.getInstance("SHA-512");
-        if (encrypt(password).equals(hashedPassword)){
-            return true;
-        } else {
-    return false;
-        }
-    }
+
 }

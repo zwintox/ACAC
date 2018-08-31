@@ -41,7 +41,7 @@ public class LoginController {
                         @RequestParam String password,
                         HttpServletRequest request) throws NoSuchAlgorithmException {
 
-        Member member = lr.getMember(eMail, password);
+        Member member = lr.getMember(eMail,Encryption.encrypt(password));
         if (member != null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("member", member);

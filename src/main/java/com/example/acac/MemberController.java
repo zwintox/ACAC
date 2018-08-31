@@ -57,8 +57,7 @@ public class MemberController {
                     Integer.parseInt(member.getZipCode()),
                     member.geteMail(),
                     member.getPhoneNumber(),
-                    member.getPassword());
-                    // Encryption.encrypt(member.getPassword()));
+                    Encryption.encrypt(member.getPassword()));
             model.addAttribute("error",false);
           
             if (emailexist == true){
