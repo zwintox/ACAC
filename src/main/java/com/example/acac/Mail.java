@@ -49,7 +49,7 @@ public class Mail {
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
         //additional address - generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("test2@crunchify.com"));
         generateMailMessage.setSubject("ACAC tackar för din anmälan!");
-        String emailBody = "Hej " + firstname + "," + "<br><br>" + "vi har nu mottagit din anmälan. " + "</a>" +
+        String emailBody = "Hej " + firstname + "," + "<br><br>" + "Vi har mottagit din anmälan. " + "</a>" +
                 "Så snart motparten skickat in sin anmälan kommer vi matcha ihop dessa och skicka till båda era försäkringsbolag." + "</a>"
                 + "<br><br> Med vänliga hälsningar, <br>ACAC";
         generateMailMessage.setContent(emailBody, "text/html; charset=utf-8");
@@ -59,7 +59,9 @@ public class Mail {
         transport.connect("smtp.gmail.com", "no.reply.acac@gmail.com", "acac2018");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
-    }public static void generateInsuranceCompanyClaimMessage(String firstname, String email) throws AddressException, MessagingException {
+    }
+
+    public static void generateInsuranceCompanyClaimMessage(String firstname, String email, String body) throws AddressException, MessagingException {
 
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", "587");
@@ -70,11 +72,9 @@ public class Mail {
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
         //additional address - generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("test2@crunchify.com"));
-        generateMailMessage.setSubject("En av dina kunder har råkat ut för en olycka");
-        String emailBody = "Hej " + firstname + "!" + "<br><br>" + "Hej, vi har mottagit en skaderapport från en av era kunder. " + "</a>" +
-                "Nedan finner du er kund, samt motpartens skadeanmälan." + "</a>"
-                + "<br><br> Med vänliga hälsningar, <br>ACAC";
-        generateMailMessage.setContent(emailBody, "text/html; charset=utf-8");
+        generateMailMessage.setSubject("En av dina kunderhar råkat ut för en olycka");
+
+        generateMailMessage.setContent(body, "text/html; charset=utf-8");
 
         Transport transport = getMailSession.getTransport("smtp");
 
